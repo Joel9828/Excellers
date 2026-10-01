@@ -1,0 +1,25 @@
+# Normalise to LF in the repo. .htaccess especially: it can be cloned on a
+# Linux box and uploaded straight to the host, and CRLF in an Apache config
+# is a well-known source of directives that parse strangely.
+* text=auto eol=lf
+
+.htaccess text eol=lf
+*.mjs text eol=lf
+*.ts text eol=lf
+*.tsx text eol=lf
+*.css text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+
+# binaries git must not touch
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.avif binary
+*.ico binary
+*.mp4 binary
+*.webm binary
+*.woff binary
+*.woff2 binary
+*.pdf binary
