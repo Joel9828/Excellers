@@ -29,7 +29,8 @@ export default function Footer() {
         </div>
 
         <div className="shell relative pb-24 pt-24">
-          <div className="glass-on-brand relative mx-auto grid max-w-[880px] justify-items-center gap-9 overflow-hidden rounded-[26px] px-8 py-14 text-center sm:px-14">
+          <div className="glass-on-brand glass-edge glass-track relative mx-auto grid max-w-[880px] justify-items-center gap-9 overflow-hidden rounded-[26px] px-8 py-14 text-center sm:px-14">
+          <span className="glass-glow" aria-hidden="true" />
           <div className="relative z-10 grid justify-items-center gap-5">
             <motion.h2
               initial={false}

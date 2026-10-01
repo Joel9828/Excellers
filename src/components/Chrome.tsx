@@ -38,7 +38,7 @@ export function SparkButton() {
       href="#contact"
       aria-label="Contact Excellers"
       tabIndex={revealed ? 0 : -1}
-      className={`glass group fixed right-4 top-24 z-[80] hidden h-11 w-11 items-center justify-center rounded-xl transition duration-500 hover:scale-105 sm:flex ${
+      className={`glass glass-edge group fixed right-4 top-24 z-[80] hidden h-11 w-11 items-center justify-center rounded-xl transition duration-500 hover:scale-105 sm:flex ${
         revealed ? "opacity-100" : "pointer-events-none opacity-0"
       }`}
     >
@@ -86,7 +86,7 @@ export function LangFlag() {
         onClick={() => setOpen((v) => !v)}
         aria-expanded={open}
         aria-label="Change language"
-        className="glass flex h-9 w-9 items-center justify-center rounded-full text-[10px] font-bold tracking-[0.1em] text-marian transition hover:scale-105"
+        className="glass glass-edge flex h-9 w-9 items-center justify-center rounded-full text-[10px] font-bold tracking-[0.1em] text-marian transition hover:scale-105"
       >
         {lang}
       </button>
@@ -155,7 +155,7 @@ export function CookieBanner() {
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
           role="dialog"
           aria-label="Cookie preferences"
-          className="glass fixed inset-x-3 bottom-4 z-[95] mx-auto flex max-w-[960px] flex-col items-start gap-3 overflow-hidden rounded-2xl px-5 py-4 sm:flex-row sm:items-center sm:gap-6"
+          className="glass glass-edge glass-frost fixed inset-x-3 bottom-4 z-[95] mx-auto flex max-w-[960px] flex-col items-start gap-3 overflow-hidden rounded-2xl px-5 py-4 sm:flex-row sm:items-center sm:gap-6"
         >
           <p className="relative z-10 flex-1 text-[13px] leading-relaxed text-slate">
             Without data, we&apos;re guessing. With analytics and marketing cookies we

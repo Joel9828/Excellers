@@ -58,8 +58,9 @@ export default function Engagements() {
               initial={false}
               animate={shown ? { opacity: 1, y: 0 } : { opacity: 0, y: 26 }}
               transition={{ duration: 0.75, delay: 0.12 + i * 0.1, ease: [0.16, 1, 0.3, 1] }}
-              className="glass glass-hover relative flex flex-col items-center gap-5 overflow-hidden rounded-[18px] p-8 text-center transition duration-300 hover:-translate-y-1 hover:shadow-[0_34px_70px_-30px_rgba(1,62,138,0.5)]"
+              className="glass glass-hover glass-edge glass-frost glass-track relative flex flex-col items-center gap-5 overflow-hidden rounded-[18px] p-8 text-center transition duration-300 hover:-translate-y-1 hover:shadow-[0_34px_70px_-30px_rgba(1,62,138,0.5)]"
             >
+              <span className="glass-glow" aria-hidden="true" />
               <span className="sheen" aria-hidden="true" />
               <span className="relative z-10 text-[0.9375rem] font-medium text-slate">{t.tag}</span>
               <h3 className="relative z-10 text-[1.75rem] font-bold leading-[1.2] tracking-[-0.015em] text-ink">
@@ -90,7 +91,7 @@ export default function Engagements() {
           initial={false}
           animate={{ opacity: shown ? 1 : 0 }}
           transition={{ duration: 0.8, delay: 0.45 }}
-          className="glass relative mt-6 grid items-center justify-items-center gap-6 overflow-hidden rounded-[18px] px-8 py-7 text-center"
+          className="glass glass-edge glass-frost relative mt-6 grid items-center justify-items-center gap-6 overflow-hidden rounded-[18px] px-8 py-7 text-center"
         >
           <h3 className="relative z-10 text-[1.125rem] font-bold text-ink">{engagements.baselineTitle}</h3>
           <ul className="relative z-10 flex flex-wrap justify-center gap-x-9 gap-y-3">

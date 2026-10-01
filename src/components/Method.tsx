@@ -191,7 +191,7 @@ export default function Method() {
         {/* stepper */}
         <div // top-28, not top-24: clears the floating nav pill (bottom ~87px) with room
           // to spare, so the two never crowd each other as the pin releases
-          className="pointer-events-none absolute left-1/2 top-28 z-20 hidden -translate-x-1/2 items-center gap-0 lg:flex">
+          className="glass-chip-on-brand pointer-events-none absolute left-1/2 top-28 z-20 hidden -translate-x-1/2 items-center gap-0 rounded-2xl px-5 py-2.5 lg:flex">
           {principle.stages.map((p, i) => (
             <span key={p.name} className="flex items-center">
               <span className="flex w-[84px] flex-col items-center gap-1.5">
@@ -232,7 +232,7 @@ export default function Method() {
         </div>
 
         {/* scrub progress */}
-        <div className="glass-on-brand pointer-events-none absolute bottom-8 left-1/2 z-20 hidden w-[min(560px,60vw)] -translate-x-1/2 overflow-hidden rounded-2xl px-5 py-3.5 lg:block">
+        <div className="glass-on-brand glass-edge pointer-events-none absolute bottom-8 left-1/2 z-20 hidden w-[min(560px,60vw)] -translate-x-1/2 overflow-hidden rounded-2xl px-5 py-3.5 lg:block">
           <div className="relative z-10 mb-2 flex items-center justify-between text-[11px] font-semibold uppercase tracking-[0.14em] text-white/70">
             <span>Stage {String(active + 1).padStart(2, "0")} / 05</span>
             <span className="tabular-nums">{Math.round(progress * 100)}%</span>
@@ -257,7 +257,7 @@ export default function Method() {
               className="stage-panel relative flex min-h-[70svh] w-full shrink-0 items-center overflow-hidden px-6 py-20 lg:h-[100svh] lg:min-h-0 lg:w-screen lg:px-[7vw] lg:pb-12 lg:pt-16"
             >
               <span
-                className="stage-ghost pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 select-none
+                className="stage-ghost glass-breathe pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 select-none
                            font-[family-name:var(--font-display)] text-[clamp(11rem,32vw,28rem)] font-extrabold leading-none text-white/[0.07]"
                 aria-hidden="true"
               >
@@ -267,7 +267,7 @@ export default function Method() {
               <div className="relative mx-auto grid w-full max-w-[760px] justify-items-center gap-6 text-center">
                 {/* copy */}
                 <div className="max-w-[620px]">
-                  <span className="glass-on-brand relative mb-5 inline-flex items-center gap-2.5 overflow-hidden rounded-full px-4 py-1.5">
+                  <span className="glass-chip-on-brand relative mb-5 inline-flex items-center gap-2.5 rounded-full px-4 py-1.5">
                     <span className="relative z-10 h-1.5 w-1.5 rounded-full bg-sky shadow-[0_0_8px_2px_rgba(127,215,255,0.7)]" />
                     <span className="relative z-10 text-[12px] font-semibold uppercase tracking-[0.14em] text-white/80">
                       Stage {p.n}

@@ -32,12 +32,13 @@ export default function Manifesto() {
       />
 
       <div className="shell relative">
-        <div className="mx-auto grid max-w-[820px] justify-items-center gap-7 text-center">
+        <div className="glass glass-edge glass-frost glass-track relative mx-auto grid max-w-[880px] justify-items-center gap-7 overflow-hidden rounded-[28px] px-8 py-14 text-center sm:px-14">
+          <span className="glass-glow" aria-hidden="true" />
           <motion.p
             initial={false}
             animate={shown ? { opacity: 1, y: 0 } : { opacity: 0, y: 26 }}
             transition={{ duration: 0.95, ease: [0.16, 1, 0.3, 1] }}
-            className="font-[family-name:var(--font-display)] text-[clamp(3rem,1.8rem+5vw,6rem)] font-bold leading-none tracking-[-0.02em] text-ink"
+            className="relative z-10 font-[family-name:var(--font-display)] text-[clamp(3rem,1.8rem+5vw,6rem)] font-bold leading-none tracking-[-0.02em] text-ink"
           >
             <span className="whitespace-nowrap">
               {statement.big}
@@ -51,7 +52,7 @@ export default function Manifesto() {
             initial={false}
             animate={shown ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.85, delay: 0.12 }}
-            className="max-w-[56ch] text-[1.125rem] leading-[1.65] text-slate"
+            className="relative z-10 max-w-[56ch] text-[1.125rem] leading-[1.65] text-slate"
           >
             {statement.body}
           </motion.p>
@@ -60,7 +61,7 @@ export default function Manifesto() {
             initial={false}
             animate={{ opacity: shown ? 1 : 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="text-[0.9375rem] font-medium text-honolulu"
+            className="relative z-10 text-[0.9375rem] font-medium text-honolulu"
           >
             {statement.source}
           </motion.p>

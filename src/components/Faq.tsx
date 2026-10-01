@@ -29,7 +29,7 @@ export default function Faq() {
           {faq.title}
         </motion.h2>
 
-        <div className="glass relative mx-auto max-w-[860px] overflow-hidden rounded-[20px] px-7 sm:px-9">
+        <div className="glass glass-edge glass-frost relative mx-auto max-w-[860px] overflow-hidden rounded-[20px] px-7 sm:px-9">
           {faq.items.map((item, i) => (
             <motion.details
               key={item.q}

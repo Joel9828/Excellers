@@ -34,8 +34,8 @@ function Frame({
         <span key={c} className={`absolute h-4 w-4 border-sky/70 ${c}`} aria-hidden="true" />
       ))}
 
-      <div className="m-[9px] overflow-hidden rounded-sm border border-white/25 bg-white shadow-[0_18px_40px_-24px_rgba(0,0,0,0.5)]">
-        <div className="flex items-center justify-between border-b border-mist px-3.5 py-2">
+      <div className="glass glass-edge relative m-[9px] overflow-hidden rounded-lg shadow-[0_18px_40px_-24px_rgba(0,0,0,0.5)]">
+        <div className="relative z-10 flex items-center justify-between border-b border-mist/70 px-3.5 py-2">
           <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate">
             {label}
           </span>

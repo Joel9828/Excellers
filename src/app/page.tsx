@@ -1,4 +1,5 @@
 import SmoothScroll from "@/components/SmoothScroll";
+import GlassPointer from "@/components/GlassPointer";
 import Intro from "@/components/Intro";
 import BrandBackdrop from "@/components/BrandBackdrop";
 import Header from "@/components/Header";
@@ -16,6 +17,7 @@ export default function Home() {
   return (
     <>
       <SmoothScroll />
+      <GlassPointer />
       <a className="skip" href="#main">
         Skip to content
       </a>
