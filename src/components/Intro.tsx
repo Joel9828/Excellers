@@ -112,20 +112,25 @@ export default function Intro() {
             {principle.stages.map((p, i) => (
               <li
                 key={p.name}
-                className="i-rise glass-chip flex items-center gap-4 rounded-full px-4 py-2"
+                className="i-rise flex items-center gap-4"
                 style={{ animationDelay: `${1.15 + i * 0.11}s` }}
               >
                 <span className="text-[11px] font-medium uppercase tracking-[0.22em] text-slate">
                   {p.name.toUpperCase()}
                 </span>
-                
+                {i < principle.stages.length - 1 && (
+                  <span
+                    className="h-px w-5 bg-gradient-to-r from-honolulu/70 to-transparent"
+                    aria-hidden="true"
+                  />
+                )}
               </li>
             ))}
           </ul>
 
           {/* scroll cue */}
           <div
-            className="i-fade glass-chip absolute bottom-10 left-1/2 flex -translate-x-1/2 flex-col items-center gap-3 rounded-full px-4 py-3.5"
+            className="i-fade absolute bottom-10 left-1/2 flex -translate-x-1/2 flex-col items-center gap-3"
             style={{ animationDelay: "1.9s" }}
           >
             <span className="text-[11px] font-medium uppercase tracking-[0.24em] text-slate">

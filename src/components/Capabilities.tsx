@@ -51,7 +51,7 @@ export default function Capabilities() {
           </motion.p>
         </div>
 
-        <div className="glass glass-edge glass-frost relative grid overflow-hidden rounded-[22px] sm:grid-cols-2 lg:grid-cols-4">
+        <div className="glass relative grid overflow-hidden rounded-[22px] sm:grid-cols-2 lg:grid-cols-4">
           {capabilities.map((c, i) => (
             <motion.a
               key={c.name}
@@ -59,7 +59,7 @@ export default function Capabilities() {
               initial={false}
               animate={shown ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
               transition={{ duration: 0.7, delay: 0.1 + i * 0.05, ease: [0.16, 1, 0.3, 1] }}
-              className="group glass-track relative z-10 flex min-h-[248px] flex-col items-center overflow-hidden border-b border-r border-mist/60 px-7 pb-8 pt-7 text-center transition-colors duration-300 last:border-r-0 hover:bg-white/40 sm:[&:nth-child(2n)]:border-r-0 lg:[&:nth-child(2n)]:border-r lg:[&:nth-child(4n)]:border-r-0"
+              className="group relative z-10 flex min-h-[248px] flex-col items-center overflow-hidden border-b border-r border-mist/60 px-7 pb-8 pt-7 text-center transition-colors duration-300 last:border-r-0 hover:bg-white/60 sm:[&:nth-child(2n)]:border-r-0 lg:[&:nth-child(2n)]:border-r lg:[&:nth-child(4n)]:border-r-0"
             >
               {/* Signal hover line — the one place the accent is spent here */}
               <span
@@ -68,8 +68,7 @@ export default function Capabilities() {
               />
 
               {/* hexagon-framed number */}
-              <span className="glass-glow" aria-hidden="true" />
-              <span className="relative z-10 grid h-[50px] w-11 place-items-center text-honolulu">
+              <span className="relative grid h-[50px] w-11 place-items-center text-honolulu">
                 <svg viewBox="0 0 44 50" className="absolute inset-0 h-full w-full" aria-hidden="true">
                   <path
                     d="M22 1l20 11.5v25L22 49 2 37.5v-25z"
@@ -84,10 +83,10 @@ export default function Capabilities() {
                 </b>
               </span>
 
-              <h3 className="relative z-10 mt-8 min-h-[2.5em] text-[1.25rem] font-bold leading-[1.25] tracking-[-0.01em] text-ink">
+              <h3 className="mt-8 min-h-[2.5em] text-[1.25rem] font-bold leading-[1.25] tracking-[-0.01em] text-ink">
                 {c.name}
               </h3>
-              <p className="relative z-10 mt-2 text-[0.9375rem] leading-[1.55] text-slate">{c.desc}</p>
+              <p className="mt-2 text-[0.9375rem] leading-[1.55] text-slate">{c.desc}</p>
             </motion.a>
           ))}
         </div>

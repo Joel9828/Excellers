@@ -77,7 +77,7 @@ export default function Header() {
       <div className="relative mx-auto w-full max-w-[1200px]">
         <div
           className={`relative z-10 flex items-center gap-3 overflow-hidden rounded-[28px] px-4 py-2.5 transition-colors duration-500 sm:rounded-full sm:px-5 ${
-            light ? "glass glass-edge text-ink" : "brand-pill-glass glass-edge text-white"
+            light ? "glass text-ink" : "brand-pill-glass text-white"
           }`}
           onMouseEnter={(e) => e.currentTarget.classList.add("pill-lit")}
           onMouseLeave={(e) => e.currentTarget.classList.remove("pill-lit")}
@@ -190,7 +190,7 @@ export default function Header() {
               exit={{ opacity: 0, y: -8, scale: 0.995 }}
               transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
               onMouseEnter={() => hover(true)}
-              className="glass glass-edge glass-frost absolute inset-x-0 top-[calc(100%+10px)] hidden overflow-hidden rounded-[22px] p-7 text-ink lg:block"
+              className="glass absolute inset-x-0 top-[calc(100%+10px)] hidden overflow-hidden rounded-[22px] p-7 text-ink lg:block"
             >
               <div className="relative z-10 mb-5 flex items-center justify-between">
                 <span className="eyebrow">Capabilities</span>
@@ -236,7 +236,7 @@ export default function Header() {
               initial={{ opacity: 0, y: -8 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -8 }}
-              className="glass glass-edge glass-frost relative mt-2 overflow-hidden rounded-3xl p-5 text-ink lg:hidden"
+              className="glass relative mt-2 overflow-hidden rounded-3xl p-5 text-ink lg:hidden"
             >
               <nav className="relative z-10 flex flex-col gap-1">
                 {nav.map((it) => (

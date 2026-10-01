@@ -32,7 +32,7 @@ export default function Hero() {
       ).map((c) => (
         <span
           key={c}
-          className={`pointer-events-none absolute hidden h-7 w-7 border-signal/60 shadow-[0_0_12px_rgba(0,180,217,0.45)] sm:block ${c}`}
+          className={`pointer-events-none absolute hidden h-7 w-7 border-signal/45 sm:block ${c}`}
           aria-hidden="true"
         />
       ))}
@@ -107,10 +107,10 @@ export default function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.8, duration: 0.7 }}
-            className="glass glass-edge glass-frost relative mt-10 flex flex-wrap gap-x-8 gap-y-3 overflow-hidden rounded-2xl px-6 py-4 text-[15px] text-slate"
+            className="mt-10 flex flex-wrap gap-x-10 gap-y-3 border-t border-mist pt-7 text-[15px] text-slate"
           >
             {regions.map((r) => (
-              <li key={r} className="relative z-10 flex items-center gap-2.5">
+              <li key={r} className="flex items-center gap-2.5">
                 <Hex />
                 {r}
               </li>
