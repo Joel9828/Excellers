@@ -1,26 +1,673 @@
 @import "tailwindcss";
 
+/* ──────────────────────────────────────────────────────────────
+   EXCELLERS — design tokens
+   Source of truth: "EXCELLERS - Master Layout (Figma view).html",
+   which reconciles the brand guide (pp. 8, 16–21) with the master
+   prompt. Where they disagreed the PDF won for colour, type and logo.
+   ────────────────────────────────────────────────────────────── */
+@theme {
+  /* official brand colours */
+  --color-marian: #013e8a;
+  --color-honolulu: #0076b5;
+  --color-signal: #00b4d9; /* Pacific Cyan — the one accent */
+  --color-slate: #54595f;
+  --color-mist: #d3d9e5;
+  --color-sky: #7fd7ff;
+
+  /* extended neutrals */
+  --color-void: #060912;
+  --color-deep: #04234f;
+  --color-paper: #f4f6fa;
+  --color-ink: #11131a;
+
+  /* aliases kept so existing utilities keep resolving */
+  --color-pacific: #00b4d9;
+  --color-accent: #00b4d9;
+  --color-accent-deep: #013e8a;
+
+  --font-display: var(--font-serif-display), Constantia, Georgia, "Times New Roman", serif;
+  --font-body: var(--font-inter), system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-serif: var(--font-serif-display), Constantia, Georgia, serif;
+
+  --text-h1: clamp(2.5rem, 1.2rem + 4.2vw, 4.5rem);
+  --text-h2: clamp(2rem, 1.4rem + 2.2vw, 3.25rem);
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* White ground. Brand colour is spent as solid blocks (the E-Principle runs
+     on Marian, the closing CTA too) rather than as tints on a dark page. */
+  --bg: #ffffff;
+  --fg: var(--color-ink);
+  --shell: 1200px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  background: #ffffff;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  overflow-x: clip;
+}
+
+/* Lenis */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+::selection {
+  background: var(--color-signal);
+  color: #04121c;
+}
+
+/* ── ambient dot field ───────────────────────────────────────── */
+/* `.dot-field` sits on the white ground; `.dot-field-on-brand` sits on a solid
+   Marian block. (The old `.dot-field-dark` name is kept as an alias so nothing
+   silently loses its texture.) */
+.dot-field,
+.dot-field-dark {
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    rgba(1, 62, 138, 0.18) 1px,
+    transparent 0
+  );
+  background-size: 30px 30px;
+}
+
+.dot-field-on-brand {
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    rgba(255, 255, 255, 0.16) 1px,
+    transparent 0
+  );
+  background-size: 30px 30px;
+}
+
+/* ── shared utilities ────────────────────────────────────────── */
+.shell {
+  width: min(100% - 3rem, var(--shell));
+  margin-inline: auto;
+}
+
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-honolulu);
+}
+
+/* the same label on a solid brand block */
+.on-brand .eyebrow {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.hair {
+  border-color: var(--color-mist);
+}
+
+.grad-text {
+  background: linear-gradient(
+    96deg,
+    var(--color-honolulu) 0%,
+    var(--color-marian) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.grad-bg {
+  background: linear-gradient(
+    96deg,
+    var(--color-signal) 0%,
+    var(--color-honolulu) 55%,
+    var(--color-marian) 100%
+  );
+}
+
+/* Large brand areas run as gradients rather than one flat fill: a single
+   #013E8A plane over a whole section reads heavy and dead. These keep the
+   logo's own Pacific → Honolulu → Marian direction. */
+.brand-plane {
+  background-image:
+    radial-gradient(120% 90% at 82% 8%, rgba(0, 180, 217, 0.30), transparent 58%),
+    radial-gradient(90% 80% at 8% 100%, rgba(4, 35, 79, 0.85), transparent 62%),
+    linear-gradient(152deg, #0a4f96 0%, #013e8a 46%, #04234f 100%);
+}
+
+.brand-plane-soft {
+  background-image:
+    radial-gradient(110% 120% at 88% 0%, rgba(0, 180, 217, 0.26), transparent 60%),
+    linear-gradient(140deg, #0a5aa4 0%, #013e8a 58%, #04234f 100%);
+}
+
+.brand-pill {
+  background-image: linear-gradient(120deg, #0a5aa4 0%, #013e8a 62%, #04234f 100%);
+}
+
+/* the nav pill on the white page: the brand gradient, but translucent and
+   refracting, so the texture behind it stays faintly readable. Held at ~0.95
+   deliberately — the pinned E-Principle stepper passes beneath the nav as the
+   pin releases, and a lighter pill lets that ghost through. */
+.brand-pill-glass {
+  background-image:
+    linear-gradient(108deg, rgba(255, 255, 255, 0.22) 0%, transparent 38%),
+    linear-gradient(120deg, rgba(10, 90, 164, 0.95) 0%, rgba(1, 62, 138, 0.955) 62%, rgba(4, 35, 79, 0.96) 100%);
+  backdrop-filter: blur(18px) saturate(1.35);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.28),
+    0 18px 45px -20px rgba(1, 62, 138, 0.55);
+}
+
+.signal-btn {
+  background-image: linear-gradient(120deg, #22c6e6 0%, #00b4d9 48%, #0091c2 100%);
+}
+
+/* on a solid Marian block the lockup has to lighten, not darken */
+.on-brand .grad-text {
+  background: linear-gradient(96deg, #ffffff 0%, var(--color-sky) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* focus ring that matches the brand */
+:where(a, button, input, [tabindex]):focus-visible {
+  outline: 2px solid var(--color-honolulu);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+.skip {
+  position: fixed;
+  top: -100px;
+  left: 1rem;
+  z-index: 200;
+  padding: 0.6rem 1rem;
+  background: var(--color-marian);
+  color: #ffffff;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: 8px;
+  transition: top 0.2s;
+}
+.skip:focus {
+  top: 1rem;
+}
+
+/* hide scrollbar on horizontal rails */
+.no-bar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.no-bar::-webkit-scrollbar {
+  display: none;
+}
+
+/* ── brand watermark ─────────────────────────────────────────── */
+@keyframes brand-breathe {
+  0%,
+  100% {
+    transform: scale(1) translateY(0);
+    opacity: 0.92;
+  }
+  50% {
+    transform: scale(1.035) translateY(-0.6%);
+    opacity: 1;
+  }
+}
+
+/* ── intro curtain entrances ─────────────────────────────────────
+   Deliberately CSS rather than JS: these run on first paint, and a
+   JS-driven opacity that never finishes would leave the opening
+   screen blank. `fill-mode: both` guarantees the end state.        */
+@keyframes intro-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+    filter: blur(14px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes intro-rise {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes intro-track {
+  from {
+    opacity: 0;
+    letter-spacing: 0.85em;
+  }
+  to {
+    opacity: 1;
+    letter-spacing: 0.44em;
+  }
+}
+
+@keyframes intro-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ── the lockup: horse merges into the C ─────────────────────────
+   The horse flies in large, then settles into the exact slot the C
+   occupies in wordmark.png (measured: left 23.225%, top 3.166%,
+   11.108% x 73.087%). Because the overlay and the wordmark's own
+   horse are the same artwork at the same size, the hand-off at the
+   end of the flight is invisible.
+
+   Robust by construction: the wordmark NEVER animates, and the
+   flying overlay starts at opacity 0. A suspended renderer (hidden
+   window) freezes an animation at its current value whatever the
+   fill mode, so the worst case here is the finished lockup with no
+   flight — never a blank or half-assembled logo. */
+@keyframes lockup-horse {
+  0% {
+    opacity: 0;
+    transform: translate(191%, -52%) scale(2.45);
+    filter: blur(12px);
+  }
+  18% {
+    opacity: 1;
+    filter: blur(6px);
+  }
+  55% {
+    filter: blur(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+    filter: blur(0);
+  }
+}
+
+/* one keyframe doing both jobs: stacking .lk-glow and .lk-horse on the same
+   element would let the later `animation` shorthand win and drop the other */
+@keyframes lockup-glow {
+  0% {
+    opacity: 0;
+    transform: translate(191%, -52%) scale(2.6);
+  }
+  35% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+.lk-horse {
+  animation: lockup-horse 1.9s cubic-bezier(0.22, 1, 0.3, 1) 0.15s;
+}
+
+.lk-glow {
+  opacity: 0;
+  animation: lockup-glow 1.9s ease-out 0.15s;
+}
+
+@keyframes cue-run {
+  0% {
+    transform: translateY(-110%);
+  }
+  100% {
+    transform: translateY(230%);
+  }
+}
+
+.i-pop {
+  animation: intro-pop 1.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.i-rise {
+  animation: intro-rise 1.1s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.i-track {
+  animation: intro-track 1.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.i-fade {
+  animation: intro-fade 0.9s ease-out both;
+}
+
+/* ── the Manifest Line ───────────────────────────────────────────
+   A travelling light along a hairline, per the master layout. */
+@keyframes manifest-travel {
+  0% {
+    left: -32%;
+  }
+  70%,
+  100% {
+    left: 100%;
+  }
+}
+
+.manifest-line {
+  left: -32%;
+  background: linear-gradient(90deg, transparent, var(--color-signal) 50%, transparent);
+  animation: manifest-travel 8s cubic-bezier(0.6, 0, 0.4, 1) 1.8s infinite;
+}
+
+/* slow sweep used by the futuristic panel chrome */
+@keyframes hud-sweep {
+  from {
+    transform: translateX(-120%);
+  }
+  to {
+    transform: translateX(320%);
+  }
+}
+
+@keyframes grid-drift {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 56px 56px;
+  }
+}
+
+.tech-grid {
+  background-image:
+    linear-gradient(to right, rgba(1, 62, 138, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(1, 62, 138, 0.08) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+/* the grid as drawn on a solid Marian block */
+.tech-grid-dark,
+.tech-grid-on-brand {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.10) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.10) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+.scanlines {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    rgba(1, 62, 138, 0.045) 0px,
+    rgba(1, 62, 138, 0.045) 1px,
+    transparent 1px,
+    transparent 4px
+  );
+}
+
+/* ── glass ───────────────────────────────────────────────────────
+   A refracting surface: blur what is behind, a hairline ring, and a
+   specular highlight raking across the top-left. Deliberately light —
+   the page ground is white, so a heavy blur just reads as grey mud.
+   The host needs `relative`; ::before is the sheen and inherits the
+   host's radius. */
+.glass {
+  background-image: linear-gradient(
+    150deg,
+    rgba(255, 255, 255, 0.86) 0%,
+    rgba(244, 246, 250, 0.66) 52%,
+    rgba(211, 217, 229, 0.52) 100%
+  );
+  /* No hand-written -webkit- prefix here: Lightning CSS dedupes a
+     standard+prefixed pair down to the prefixed one alone, which silently
+     kills the blur. It adds the prefixes itself. */
+  backdrop-filter: blur(18px) saturate(1.4);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    inset 0 -1px 0 rgba(1, 62, 138, 0.06),
+    0 0 0 1px rgba(1, 62, 138, 0.07),
+    0 22px 55px -28px rgba(1, 62, 138, 0.38);
+}
+
+/* the same surface as read on a solid Marian block */
+.glass-on-brand {
+  background-image: linear-gradient(
+    150deg,
+    rgba(255, 255, 255, 0.18) 0%,
+    rgba(255, 255, 255, 0.07) 58%,
+    rgba(0, 180, 217, 0.1) 100%
+  );
+  backdrop-filter: blur(16px) saturate(1.25);
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.3),
+    0 22px 55px -28px rgba(4, 35, 79, 0.65);
+}
+
+.glass::before,
+.glass-on-brand::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background-image: linear-gradient(
+    108deg,
+    rgba(255, 255, 255, 0.5) 0%,
+    rgba(255, 255, 255, 0.12) 26%,
+    transparent 42%
+  );
+}
+
+/* a specular highlight that sweeps across on hover */
+@keyframes glass-sheen {
+  from {
+    transform: translateX(-130%) skewX(-14deg);
+  }
+  to {
+    transform: translateX(260%) skewX(-14deg);
+  }
+}
+
+.sheen {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 38%;
+  pointer-events: none;
+  opacity: 0;
+  background-image: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.72) 48%,
+    transparent
+  );
+  transform: translateX(-130%) skewX(-14deg);
+}
+
+.glass-hover:hover .sheen,
+.glass-hover:focus-visible .sheen {
+  opacity: 1;
+  animation: glass-sheen 0.95s cubic-bezier(0.3, 0, 0.3, 1);
+}
+
+/* ── the nav lockup, on hover ─────────────────────────────────────
+   The landing choreography at nav scale: the horse flies in from the
+   right, large and blurred, settles onto the C, then dissolves into
+   it. Because it only ever appears *large and in motion*, it dodges
+   the fine-line art's legibility floor (~40px) that keeps the symbol
+   out of the resting nav mark.
+
+   Failure-safe like the intro lockup: the wordmark text never
+   animates and the overlay starts and ends at opacity 0, so a
+   suspended renderer leaves the clean text mark, never a smudge. */
+@keyframes nav-lockup {
+  0% {
+    opacity: 0;
+    transform: translate(360%, -14%) scale(2.9);
+    filter: blur(5px);
+  }
+  20% {
+    opacity: 1;
+    filter: blur(2.5px);
+  }
+  58% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1.16);
+    filter: blur(0);
+  }
+  76% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(0, 0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes nav-lockup-glow {
+  0% {
+    opacity: 0;
+    transform: translate(360%, -14%) scale(3.3);
+  }
+  30% {
+    opacity: 0.85;
+  }
+  70% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(0, 0) scale(1.7);
+  }
+}
+
+/* the C catches the light as the horse lands on it */
+@keyframes nav-c-spark {
+  0%,
+  42% {
+    text-shadow: none;
+  }
+  60% {
+    text-shadow:
+      0 0 14px rgba(0, 180, 217, 0.95),
+      0 0 4px rgba(255, 255, 255, 0.75);
+  }
+  100% {
+    text-shadow: none;
+  }
+}
+
+.nav-horse,
+.nav-horse-glow {
+  opacity: 0;
+}
+
+.nav-lock:hover .nav-horse,
+.nav-lock:focus-visible .nav-horse {
+  animation: nav-lockup 1.15s cubic-bezier(0.22, 1, 0.3, 1);
+}
+
+.nav-lock:hover .nav-horse-glow,
+.nav-lock:focus-visible .nav-horse-glow {
+  animation: nav-lockup-glow 1.15s ease-out;
+}
+
+.nav-lock:hover .nav-c,
+.nav-lock:focus-visible .nav-c {
+  animation: nav-c-spark 1.15s ease-out;
+}
+
+/* nav items frost over on hover — the chip is a pseudo-element so it can
+   sit behind the label without another wrapper */
+.nav-chip::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  opacity: 0;
+  background-image: linear-gradient(
+    140deg,
+    rgba(255, 255, 255, 0.26),
+    rgba(255, 255, 255, 0.08)
+  );
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(6px);
+  transition: opacity 0.28s ease;
+}
+
+/* on the white pill the same chip has to darken instead of lighten */
+.glass .nav-chip::after {
+  background-image: linear-gradient(
+    140deg,
+    rgba(1, 62, 138, 0.1),
+    rgba(1, 62, 138, 0.04)
+  );
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.8),
+    0 0 0 1px rgba(1, 62, 138, 0.09);
+}
+
+.nav-chip:hover::after,
+.nav-chip:focus-visible::after,
+.nav-chip-on::after {
+  opacity: 1;
+}
+
+/* the pill's own sheen, raked on hover */
+.pill-lit .sheen {
+  opacity: 1;
+  animation: glass-sheen 1.1s cubic-bezier(0.3, 0, 0.3, 1);
+}
+
+/* The E-Principle stacks its HUD under the centred copy. The usable band
+   is whatever the stage stepper (top) and the scrub readout (bottom) leave
+   behind — about 650px at 900px tall, but only ~520px at 768px. Below that
+   the diagram is the first thing to go, so the copy never clips. */
+@media (max-height: 879px) {
+  .hud-tall-only {
+    display: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

@@ -1,0 +1,103 @@
+# ──────────────────────────────────────────────────────────────────
+# EXCELLERS — static export config for Hostinger (LiteSpeed / Apache)
+#
+# Copied into out/ by `npm run export`. Upload the CONTENTS of out/
+# into public_html (this file included — it must sit beside index.html).
+#
+# NOTE: this file must never be saved with a BOM. A byte-order mark
+# makes Apache read the first directive as garbage and 500 the site.
+# ──────────────────────────────────────────────────────────────────
+
+DirectoryIndex index.html
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # ── force HTTPS ────────────────────────────────────────────────
+  # Hostinger terminates TLS at the proxy, so %{HTTPS} alone is not
+  # enough — X-Forwarded-Proto is what actually carries the scheme.
+  RewriteCond %{HTTPS} !=on
+  RewriteCond %{HTTP:X-Forwarded-Proto} !=https
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+  # ── drop a trailing slash, except on the site root ─────────────
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^(.+)/$ /$1 [R=301,L]
+
+  # ── anything that exists on disk is served as-is ───────────────
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # ── /foo → /foo.html ───────────────────────────────────────────
+  # Next's static export writes flat .html files, not folders, so a
+  # pretty URL has to be mapped onto one.
+  RewriteCond %{REQUEST_FILENAME}.html -f
+  RewriteRule ^(.*)$ $1.html [L]
+</IfModule>
+
+ErrorDocument 404 /404.html
+
+# ── MIME types ────────────────────────────────────────────────────
+# Older LiteSpeed/Apache profiles do not know these, and a wrong type
+# on a font or a video is a silent failure in the browser.
+<IfModule mod_mime.c>
+  AddType font/woff2 .woff2
+  AddType font/woff .woff
+  AddType image/avif .avif
+  AddType image/webp .webp
+  AddType image/svg+xml .svg
+  AddType video/mp4 .mp4
+  AddType application/manifest+json .webmanifest
+</IfModule>
+
+# ── compression ───────────────────────────────────────────────────
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/css text/xml
+  AddOutputFilterByType DEFLATE application/javascript application/json
+  AddOutputFilterByType DEFLATE application/xml application/rss+xml
+  AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+# ── caching ───────────────────────────────────────────────────────
+# Everything under /_next/static/ carries a content hash in its name,
+# so it can be cached forever. HTML never can: it is what points at
+# the current hashes, and a stale copy pins the whole site to an old
+# build. Files from public/ sit in between — same name across builds,
+# but they change rarely.
+<IfModule mod_setenvif.c>
+  SetEnvIf Request_URI "^/_next/static/" IMMUTABLE_ASSET=1
+</IfModule>
+
+<IfModule mod_headers.c>
+  Header set Cache-Control "public, max-age=31536000, immutable" env=IMMUTABLE_ASSET
+
+  <FilesMatch "\.html$">
+    Header set Cache-Control "public, max-age=0, must-revalidate"
+  </FilesMatch>
+
+  <FilesMatch "\.(png|jpe?g|webp|avif|svg|ico|mp4|webm|woff2?)$">
+    Header set Cache-Control "public, max-age=2592000" env=!IMMUTABLE_ASSET
+  </FilesMatch>
+
+  # ── security ────────────────────────────────────────────────────
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+</IfModule>
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault "access plus 1 hour"
+  ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
+
+# ── hygiene ───────────────────────────────────────────────────────
+Options -Indexes
+
+<IfModule mod_authz_core.c>
+  <FilesMatch "^\.(env|gitignore|htaccess)$">
+    Require all denied
+  </FilesMatch>
+</IfModule>
