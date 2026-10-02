@@ -4,7 +4,6 @@ import { useRef } from "react";
 import { motion } from "framer-motion";
 import { engagements } from "@/lib/content";
 import useRevealed from "@/lib/useRevealed";
-import RaggedEdge from "./RaggedEdge";
 
 /**
  * Three scope-based tiers. No figures and no "recommended" badge — the master
@@ -19,17 +18,10 @@ export default function Engagements() {
     <section
       ref={ref}
       id="engagements"
-      // inherited from the removed Proof section: the torn edge that hands
-      // the page back from the Marian E-Principle block to white
-      className="relative py-28 sm:py-36"
+      className="relative overflow-hidden py-28 sm:py-36"
       aria-label="Engagements"
     >
-      <RaggedEdge color="#ffffff" seed={11} height={380} />
-      {/* runs up over the torn strip so the texture has no seam at the edge */}
-      <div
-        className="dot-field pointer-events-none absolute inset-x-0 bottom-0 -top-[380px] opacity-40"
-        aria-hidden="true"
-      />
+      <div className="dot-field pointer-events-none absolute inset-0 opacity-40" aria-hidden="true" />
 
       <div className="shell relative">
         <div className="mb-14 grid justify-items-center gap-5 text-center">

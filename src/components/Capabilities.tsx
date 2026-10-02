@@ -1,18 +1,45 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { capabilities, capabilitiesIntro } from "@/lib/content";
 import useRevealed from "@/lib/useRevealed";
+import CapabilityIcon from "./CapabilityIcon";
 
 /**
- * The eight capabilities, as one monochrome grid. They are numbered because
- * they are a fixed set, and Signal appears only as the hover line — the master
- * layout is explicit that the accent is not spent anywhere else here.
+ * The eight capabilities as one connected system, not a grid of cards.
+ *
+ * A list on the left, a radial honeycomb on the right. Selecting a capability
+ * lights its node and every line that touches it — the point the copy makes is
+ * that no capability stands alone, so the diagram has to show the links rather
+ * than describe them.
+ *
+ * The list is the control; the SVG mirrors it and is `aria-hidden`, so a
+ * screen reader gets the buttons and the live description, not the geometry.
  */
+
+const R = 140;
+const C = 200;
+
+/** the eight nodes, evenly spaced from twelve o'clock */
+const NODES = capabilities.map((_, i) => {
+  const a = -Math.PI / 2 + (i * Math.PI) / 4;
+  return [C + R * Math.cos(a), C + R * Math.sin(a)] as const;
+});
+
+/** every pair, so the mesh reads as a system rather than a star */
+const EDGES: { a: number; b: number; near: boolean }[] = [];
+for (let i = 0; i < 8; i++) {
+  EDGES.push({ a: i, b: (i + 1) % 8, near: true });
+  for (let j = i + 2; j < 8; j++) {
+    if (!(i === 0 && j === 7)) EDGES.push({ a: i, b: j, near: false });
+  }
+}
+
 export default function Capabilities() {
   const ref = useRef<HTMLElement>(null);
   const shown = useRevealed(ref, { rootMargin: "0px 0px -12% 0px" });
+  const [active, setActive] = useState(0);
 
   return (
     <section
@@ -51,44 +78,121 @@ export default function Capabilities() {
           </motion.p>
         </div>
 
-        <div className="glass relative grid overflow-hidden rounded-[22px] sm:grid-cols-2 lg:grid-cols-4">
-          {capabilities.map((c, i) => (
-            <motion.a
-              key={c.name}
-              href="#contact"
-              initial={false}
-              animate={shown ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
-              transition={{ duration: 0.7, delay: 0.1 + i * 0.05, ease: [0.16, 1, 0.3, 1] }}
-              className="group relative z-10 flex min-h-[248px] flex-col items-center overflow-hidden border-b border-r border-mist/60 px-7 pb-8 pt-7 text-center transition-colors duration-300 last:border-r-0 hover:bg-white/60 sm:[&:nth-child(2n)]:border-r-0 lg:[&:nth-child(2n)]:border-r lg:[&:nth-child(4n)]:border-r-0"
-            >
-              {/* Signal hover line — the one place the accent is spent here */}
-              <span
-                className="absolute -left-px -right-px -top-px h-[3px] origin-left scale-x-0 bg-signal transition-transform duration-[350ms] ease-[cubic-bezier(.2,.7,.2,1)] group-hover:scale-x-100 group-focus-visible:scale-x-100"
-                aria-hidden="true"
-              />
-
-              {/* hexagon-framed number */}
-              <span className="relative grid h-[50px] w-11 place-items-center text-honolulu">
-                <svg viewBox="0 0 44 50" className="absolute inset-0 h-full w-full" aria-hidden="true">
-                  <path
-                    d="M22 1l20 11.5v25L22 49 2 37.5v-25z"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeOpacity="0.45"
-                    strokeWidth="1.5"
+        <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)]">
+          {/* ── the list: the real control ─────────────────────── */}
+          <div>
+            <div className="glass overflow-hidden rounded-[18px]">
+              {capabilities.map((c, i) => (
+                <button
+                  key={c.name}
+                  type="button"
+                  onClick={() => setActive(i)}
+                  onMouseEnter={() => setActive(i)}
+                  onFocus={() => setActive(i)}
+                  aria-pressed={i === active}
+                  className={`relative z-10 flex w-full items-center gap-3.5 border-b border-mist/60 px-5 py-3.5 text-left text-[1rem] font-semibold transition last:border-b-0 ${
+                    i === active
+                      ? "bg-white/70 text-marian shadow-[inset_3px_0_0_var(--color-marian)]"
+                      : "text-ink hover:bg-white/50 hover:text-honolulu"
+                  }`}
+                >
+                  <CapabilityIcon
+                    icon={c.icon}
+                    size={30}
+                    className="flex-none text-marian"
                   />
-                </svg>
-                <b className="relative text-[13px] font-semibold tabular-nums text-ink/85">
-                  {String(i + 1).padStart(2, "0")}
-                </b>
-              </span>
+                  {c.name}
+                </button>
+              ))}
+            </div>
 
-              <h3 className="mt-8 min-h-[2.5em] text-[1.25rem] font-bold leading-[1.25] tracking-[-0.01em] text-ink">
-                {c.name}
-              </h3>
-              <p className="mt-2 text-[0.9375rem] leading-[1.55] text-slate">{c.desc}</p>
-            </motion.a>
-          ))}
+            <p
+              className="mt-6 min-h-[5.5rem] text-[1.0625rem] leading-[1.65] text-slate"
+              aria-live="polite"
+            >
+              <b className="font-semibold text-ink">{capabilities[active].name}.</b>{" "}
+              {capabilities[active].desc} {capabilitiesIntro.connects}
+            </p>
+          </div>
+
+          {/* ── the honeycomb ──────────────────────────────────── */}
+          <svg
+            viewBox="0 0 400 400"
+            className="mx-auto block w-full max-w-[460px]"
+            aria-hidden="true"
+          >
+            {EDGES.map(({ a, b, near }) => {
+              const on = a === active || b === active;
+              return (
+                <line
+                  key={`${a}-${b}`}
+                  x1={NODES[a][0]}
+                  y1={NODES[a][1]}
+                  x2={NODES[b][0]}
+                  y2={NODES[b][1]}
+                  stroke={on ? "var(--color-honolulu)" : "var(--color-mist)"}
+                  strokeWidth={on ? 1.8 : 1}
+                  opacity={near || on ? 1 : 0.45}
+                  className="transition-[stroke,stroke-width] duration-300"
+                />
+              );
+            })}
+
+            {/* spokes from the hub */}
+            {NODES.map(([x, y], i) => (
+              <line
+                key={`h${i}`}
+                x1={C}
+                y1={C}
+                x2={x}
+                y2={y}
+                stroke={i === active ? "var(--color-honolulu)" : "var(--color-mist)"}
+                strokeWidth={i === active ? 1.8 : 1}
+                className="transition-[stroke,stroke-width] duration-300"
+              />
+            ))}
+
+            {/* the hub */}
+            <circle cx={C} cy={C} r={34} fill="#ffffff" stroke="var(--color-marian)" strokeWidth={2} />
+            <circle cx={C} cy={C - 12} r={4} fill="var(--color-signal)" />
+            <text
+              x={C}
+              y={C + 10}
+              textAnchor="middle"
+              className="fill-slate text-[10px] font-semibold"
+            >
+              {capabilitiesIntro.hub[0]}
+            </text>
+            <text
+              x={C}
+              y={C + 22}
+              textAnchor="middle"
+              className="fill-slate text-[10px]"
+            >
+              {capabilitiesIntro.hub[1]}
+            </text>
+
+            {NODES.map(([x, y], i) => (
+              <g
+                key={capabilities[i].name}
+                transform={`translate(${x} ${y})`}
+                className={
+                  i === active ? "text-honolulu" : "text-marian"
+                }
+              >
+                <circle
+                  r={32}
+                  fill="#ffffff"
+                  stroke={i === active ? "var(--color-marian)" : "var(--color-slate)"}
+                  strokeWidth={i === active ? 2 : 1}
+                  className="transition-[stroke,stroke-width] duration-300"
+                />
+                <g transform="translate(-19 -19)">
+                  <CapabilityIcon icon={capabilities[i].icon} size={38} />
+                </g>
+              </g>
+            ))}
+          </svg>
         </div>
       </div>
     </section>

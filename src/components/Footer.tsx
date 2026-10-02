@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { brand, closing, footer, regions } from "@/lib/content";
 import useRevealed from "@/lib/useRevealed";
@@ -14,6 +14,15 @@ import useRevealed from "@/lib/useRevealed";
 export default function Footer() {
   const ref = useRef<HTMLElement>(null);
   const shown = useRevealed(ref, { rootMargin: "0px 0px -10% 0px" });
+  const [email, setEmail] = useState("");
+  const [state, setState] = useState<"idle" | "bad" | "sent">("idle");
+
+  // Validation only — there is no endpoint yet, so the success copy promises a
+  // reply rather than claiming the message was transmitted.
+  const submit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setState(/^\S+@\S+\.\S+$/.test(email) ? "sent" : "bad");
+  };
 
   return (
     <footer id="contact" className="relative" ref={ref}>
@@ -49,16 +58,52 @@ export default function Footer() {
             </motion.p>
           </div>
 
-          <motion.a
+          <motion.form
             initial={false}
             animate={{ opacity: shown ? 1 : 0 }}
             transition={{ duration: 0.7, delay: 0.25 }}
-            href={`mailto:${brand.email}`}
-            className="signal-btn glass-hover relative z-10 overflow-hidden rounded-[6px] px-8 py-4 text-base font-semibold text-void shadow-[0_14px_34px_-14px_rgba(0,180,217,0.95)] transition hover:brightness-110"
+            onSubmit={submit}
+            noValidate
+            className="relative z-10 grid w-full max-w-[560px] justify-items-center gap-3"
           >
-            <span className="sheen" aria-hidden="true" />
-            <span className="relative z-10">{closing.cta}</span>
-          </motion.a>
+            <label htmlFor="work-email" className="text-[0.9375rem] font-semibold text-white/85">
+              {closing.label}
+            </label>
+
+            <div className="flex w-full flex-col items-stretch gap-3 sm:flex-row sm:justify-center">
+              <input
+                id="work-email"
+                type="email"
+                autoComplete="email"
+                placeholder={closing.placeholder}
+                value={email}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                  if (state !== "idle") setState("idle");
+                }}
+                aria-invalid={state === "bad"}
+                aria-describedby="email-msg"
+                className={`h-[52px] w-full rounded-[6px] border bg-white/95 px-4 text-[1rem] text-ink outline-none transition placeholder:text-slate/70 sm:max-w-[320px] ${
+                  state === "bad" ? "border-2 border-[#ff8d85]" : "border-white/30 focus:border-sky"
+                }`}
+              />
+              <button
+                type="submit"
+                className="signal-btn glass-hover relative h-[52px] overflow-hidden rounded-[6px] px-7 text-base font-semibold text-void shadow-[0_14px_34px_-14px_rgba(0,180,217,0.95)] transition hover:brightness-110"
+              >
+                <span className="sheen" aria-hidden="true" />
+                <span className="relative z-10">{closing.cta}</span>
+              </button>
+            </div>
+
+            <p
+              id="email-msg"
+              role={state === "bad" ? "alert" : undefined}
+              className={`text-[0.875rem] ${state === "bad" ? "font-medium text-[#ffb4ae]" : "text-white/65"}`}
+            >
+              {state === "bad" ? closing.invalid : state === "sent" ? closing.sent : closing.help}
+            </p>
+          </motion.form>
           </div>
         </div>
       </div>

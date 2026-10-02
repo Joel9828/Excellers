@@ -1,0 +1,223 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light"><title>EXCELLERS — Master Visual Layout</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--s0:#F8F9FA;--s1:#E9ECEF;--s2:#DEE2E6;--s3:#CED4DA;--s4:#ADB5BD;--s5:#6C757D;--s6:#495057;--s7:#343A40;--s8:#212529;
+--w:#FFFFFF;--bg:var(--s0);--band:var(--w);--line:var(--s2);--edge:var(--s5);--mut:var(--s6);--fg:var(--s8);--mesh:var(--s3);--br:#013E8A;--hv:#0076B5;--sg:#00B4D9;--er:#B42318;--on:var(--s0);
+--d:Constantia,Georgia,'Times New Roman',serif;--b:Inter,system-ui,sans-serif;--ez:cubic-bezier(.2,.7,.2,1);
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box}html{scroll-padding-top:80px;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 16px/1.6 var(--b);-webkit-font-smoothing:antialiased}
+.w{max-width:1200px;margin:0 auto;padding:0 24px}
+.sk{position:absolute;left:-999px}.sk:focus{left:8px;top:8px;z-index:9;background:var(--br);color:var(--on);padding:12px 16px}
+:focus-visible{outline:2px solid var(--hv);outline-offset:3px}
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--w);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;gap:16px;height:64px}
+.lg{font:700 15px var(--b);letter-spacing:.18em;color:var(--br);text-decoration:none}
+nav{margin-left:auto;min-width:0}nav ul{display:flex;gap:4px;list-style:none;margin:0;padding:0;overflow-x:auto}
+.nl{position:relative;display:inline-flex;align-items:center;min-height:44px;padding:0 12px;font:500 14px var(--b);color:var(--mut);text-decoration:none;white-space:nowrap}
+.nl::after{content:"";position:absolute;left:12px;right:12px;bottom:8px;height:1px;background:var(--hv);transform:scaleX(0);transform-origin:left;transition:transform .25s var(--ez)}
+.nl:hover,.nl.is-h{color:var(--fg)}.nl:hover::after,.nl.is-h::after{transform:scaleX(1)}
+.nl[aria-current=page]{color:var(--br)}.nl[aria-current=page]::after{transform:scaleX(1);height:2px;background:var(--br)}
+.sec{padding:88px 0;border-bottom:1px solid var(--line)}.alt{background:var(--band)}
+.eye{font:600 12px var(--b);letter-spacing:.14em;text-transform:uppercase;color:var(--mut);margin:0 0 12px}
+h1{font:700 clamp(36px,5.5vw,64px)/1.05 var(--d);letter-spacing:-.015em;color:var(--br);margin:0 0 24px;max-width:18ch}
+h2{font:700 clamp(28px,3.4vw,40px)/1.12 var(--d);color:var(--br);margin:0 0 16px}
+h3{font:600 16px/1.4 var(--b);margin:40px 0 16px}
+.lede{font-size:18px;line-height:1.65;color:var(--mut);max-width:62ch;margin:0 0 40px}
+.mut{color:var(--mut)}.sm{font-size:13px}
+table{width:100%;border-collapse:collapse;font-size:14px}th,td{text-align:left;padding:12px 16px 12px 0;border-bottom:1px solid var(--line);vertical-align:top}
+th{font:600 12px var(--b);letter-spacing:.08em;text-transform:uppercase;color:var(--mut)}
+.tw{overflow-x:auto}.tw table{min-width:640px}
+.ok{color:var(--br);font-weight:600}.no{color:var(--er);font-weight:600}
+code{font-size:13px;background:var(--s1);padding:1px 6px;border-radius:3px}.alt code{background:var(--s0)}
+.sw{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px}
+.sw div{font-size:12px;color:var(--mut)}.sw i{display:block;height:72px;border:1px solid var(--line);border-radius:4px;margin-bottom:8px}.sw b{display:block;color:var(--fg);font-size:13px}
+.sp{display:grid;grid-template-columns:repeat(auto-fit,minmax(168px,1fr));gap:32px 20px;align-items:start}
+.sp figure{margin:0}.sp figcaption{font-size:12px;color:var(--mut);margin-top:10px}
+.g3{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:48px;padding:0 24px;border-radius:4px;border:1px solid transparent;font:600 14px var(--b);letter-spacing:.02em;cursor:pointer;text-decoration:none;transition:background-color .2s,border-color .2s,color .2s,transform .1s}
+.p{background:var(--br);color:var(--on)}.p:hover,.p.is-h{background:var(--hv);color:var(--on)}
+.p:active,.p.is-a{background:var(--br);transform:translateY(1px)}
+.s{border-color:var(--edge);color:var(--fg);background:transparent}.s:hover,.s.is-h{border-color:var(--br);color:var(--br)}
+.btn.is-f{outline:2px solid var(--hv);outline-offset:3px}
+.btn:disabled,.btn[aria-disabled=true]{background:var(--line);border-color:transparent;color:var(--s4);cursor:not-allowed;transform:none}
+.alt .btn:disabled{background:var(--bg)}
+.ar{transition:transform .2s var(--ez)}.btn:hover .ar,.btn.is-h .ar{transform:translateX(4px)}
+.cg{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.cap{position:relative;display:flex;flex-direction:column;gap:16px;min-height:208px;padding:28px 24px;background:var(--bg);color:var(--fg);text-decoration:none;overflow:hidden}
+.cap .ic{color:var(--br);transition:color .2s}.cap .cd{fill:var(--sg);transition:r .2s}
+.cap::before{content:"";position:absolute;left:0;right:0;top:0;height:2px;background:var(--hv);transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ez)}
+.cap:hover::before,.cap.is-h::before,.cap:focus-visible::before{transform:scaleX(1)}
+.cap:hover .ic,.cap.is-h .ic{color:var(--hv)}.cap:hover .cd,.cap.is-h .cd{r:3.2}
+.cap:active,.cap.is-a{background:var(--s1)}
+.cap h3{margin:auto 0 0;font-size:18px}.cap p{margin:0;font-size:14px;color:var(--mut)}
+.cap[aria-disabled=true]{cursor:not-allowed;color:var(--mut)}.cap[aria-disabled=true] .ic{color:var(--s4)}.cap[aria-disabled=true] .cd{fill:var(--s4)}
+.cap small{font:600 11px var(--b);letter-spacing:.1em;text-transform:uppercase;color:var(--mut)}
+.one{max-width:280px}.one .cap{border:1px solid var(--line)}
+label{display:block;font:600 14px var(--b);margin-bottom:8px}
+.in{width:100%;height:48px;padding:0 16px;font:400 16px var(--b);color:var(--fg);background:var(--bg);border:1px solid var(--edge);border-radius:4px;transition:border-color .2s}
+.in:hover{border-color:var(--fg)}.in:focus,.in.is-f{outline:2px solid var(--hv);outline-offset:2px;border-color:var(--br)}
+.in.bad{border:2px solid var(--er)}.in:disabled{background:var(--s1);border-color:var(--s3);color:var(--s4);cursor:not-allowed}
+.msg{font-size:13px;margin:8px 0 0;color:var(--mut)}.msg.er{color:var(--er);font-weight:500}
+.emp,.fb{padding:28px 24px;border:1px dashed var(--edge);border-radius:4px;background:var(--bg)}
+.emp h4,.fb h4{margin:0 0 6px;font:600 16px var(--b)}.emp p,.fb p{margin:0 0 16px;font-size:14px;color:var(--mut)}
+.fb{border-style:solid;border-color:var(--er)}
+details{border-top:1px solid var(--line);background:var(--bg)}details:last-of-type{border-bottom:1px solid var(--line)}
+summary{display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:56px;padding:12px 0;font:600 16px var(--b);cursor:pointer;list-style:none}
+summary::-webkit-details-marker{display:none}summary::after{content:"+";font:400 22px var(--b);color:var(--br);transition:transform .2s var(--ez)}
+summary:hover{color:var(--br)}details[open] summary::after{transform:rotate(45deg)}details p{margin:0 0 16px;color:var(--mut);max-width:60ch}
+.tl{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 16px}
+.tb{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0 16px;border:1px solid var(--edge);border-radius:4px;background:transparent;color:var(--fg);font:500 14px var(--b);cursor:pointer;transition:border-color .2s,color .2s}
+.tb i{width:8px;height:8px;border-radius:50%;border:1.5px solid var(--edge);transition:all .2s}
+.tb:hover{border-color:var(--br);color:var(--br)}.tb[aria-selected=true]{border-color:var(--br);color:var(--br);font-weight:600}.tb[aria-selected=true] i{background:var(--sg);border-color:var(--sg)}
+.tb.dn i{background:var(--br);border-color:var(--br)}
+.pn{padding:24px;border:1px solid var(--line);border-radius:4px;background:var(--bg);max-width:620px}.pn p{margin:0}.pn .q{font:700 22px/1.3 var(--d);color:var(--br);margin-top:6px}
+.fr{border:1px solid var(--edge);background:var(--bg)}
+.fh{position:relative;overflow:hidden;padding:56px 40px 40px;background:linear-gradient(180deg,var(--w),var(--s0))}
+.fh svg.m{position:absolute;right:-40px;top:-20px;width:520px;height:420px;stroke:var(--mesh);stroke-width:1;fill:none;stroke-linecap:round;pointer-events:none;-webkit-mask-image:linear-gradient(270deg,#000,transparent 85%);mask-image:linear-gradient(270deg,#000,transparent 85%)}
+.fh>*{position:relative}.fh .hd{font:700 clamp(30px,4.4vw,52px)/1.06 var(--d);color:var(--br);max-width:16ch;margin:0 0 16px;letter-spacing:-.015em}
+.fh p.l{max-width:50ch;color:var(--mut);margin:0 0 28px}.fh .row{display:flex;flex-wrap:wrap;gap:12px}
+.ml{height:1px;background:linear-gradient(90deg,transparent,var(--sg),transparent);opacity:.7}
+.rg{display:flex;flex-wrap:wrap;gap:8px 32px;padding:16px 40px;font-size:14px;color:var(--mut);border-top:1px solid var(--line)}
+.map{display:grid;gap:0;margin:32px 0 0;padding:0;list-style:none;counter-reset:m}
+.map li{counter-increment:m;display:grid;grid-template-columns:40px 1fr 140px;gap:16px;padding:14px 0;border-top:1px solid var(--line);font-size:14px;align-items:center}
+.map li::before{content:counter(m,decimal-leading-zero);font:600 12px var(--b);color:var(--mut)}
+.map b{font-weight:600}.map span{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--mut)}.map span i{width:20px;height:20px;border:1px solid var(--edge);border-radius:3px}
+.ul{margin:0;padding-left:20px}.ul li{margin-bottom:6px}
+footer{padding:32px 0;font-size:13px;color:var(--mut)}
+@media(max-width:900px){.cg{grid-template-columns:repeat(2,1fr)}.map li{grid-template-columns:32px 1fr}.map span{grid-column:2}.fh{padding:40px 24px}.rg{padding:16px 24px}}
+@media(max-width:520px){.cg{grid-template-columns:1fr}.sec{padding:64px 0}.w{padding:0 16px}.bar{gap:8px}.lg{letter-spacing:.1em}}
+@media(prefers-reduced-motion:no-preference){.ml{background-size:200% 100%;animation:tr 8s var(--ez) infinite}@keyframes tr{0%{background-position:100% 0}70%,100%{background-position:-100% 0}}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{transition-duration:.01ms!important;animation:none!important;scroll-behavior:auto!important}}
+</style></head><body>
+<a class="sk" href="#main">Skip to content</a>
+<header class="top"><div class="w bar"><a class="lg" href="#top">EXCELLERS</a>
+<nav aria-label="Sections"><ul><li><a class="nl" href="#audit">Audit</a></li><li><a class="nl" href="#canvas">Canvas</a></li><li><a class="nl" href="#type">Grid &amp; type</a></li><li><a class="nl" href="#components">Components</a></li><li><a class="nl" href="#icons">Icons</a></li><li><a class="nl" href="#layout">Layout</a></li><li><a class="nl" href="#a11y">Access</a></li></ul></nav>
+</div></header>
+<main id="main">
+<section class="sec" id="top"><div class="w"><p class="eye">EXCELLERS · Master visual layout v1.1</p>
+<h1>Quiet, exact, premium.</h1>
+<p class="lede">One canvas of Light Steel whites, from pure white to a cool off-white. Marian Blue for structure, Honolulu for hover, a single Signal Cyan dot where an idea manifests. Everything else is space.</p>
+<div class="row" style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn p" href="#layout">See the master layout <span class="ar" aria-hidden="true">→</span></a><a class="btn s" href="#components">Components &amp; states</a></div></div></section>
+
+<section class="sec alt" id="audit"><div class="w"><p class="eye">01 · Live-site audit</p><h2>What the live build tells us</h2>
+<p class="lede">Read from the current page structure and copy at excellers.vercel.app. Visual rendering was not inspected.</p>
+<div class="tw"><table><tr><th>Finding</th><th>Risk</th><th>Master decision</th></tr>
+<tr><td>Metadata declares a dark scheme and a <code>#060912</code> theme colour on a light-canvas site</td><td>Browser chrome and OS dark mode disagree with the page</td><td>Declare <code>light</code>; theme colour <code>#FFFFFF</code></td></tr>
+<tr><td>All eight capability cards and most footer links point to <code>#contact</code></td><td>Links that look different but go nowhere new</td><td>Real destinations, or the disabled “Coming soon” card state</td></tr>
+<tr><td>Dev copy “Reserved slot…” is visible in the Proof section</td><td>Breaks the premium read</td><td>Replace with the empty state below</td></tr>
+<tr><td>“000%” preloader text, drag-to-spin hero, sideways-scrolling E-Principle</td><td>Heavy motion, weak keyboard and reduced-motion paths</td><td>Static hex-mesh hero, tab-style stepper, no preloader</td></tr>
+<tr><td>Capability ticker repeats the eight names three times</td><td>Screen readers read it all</td><td><code>aria-hidden</code>, paused on hover and reduced motion</td></tr>
+<tr><td>Skip link, landmarks and one clear H1 already exist</td><td>None</td><td>Keep</td></tr></table></div></div></section>
+
+<section class="sec" id="canvas"><div class="w"><p class="eye">02 · Canvas &amp; colour</p><h2>Shades of white, with three brand notes</h2>
+<p class="lede">Every surface is a white: pure white, then Light Steel’s two palest tones. The darker steels are used only for lines, icons and text. Brand colour appears only on headings, primary actions, hover lines and one dot. There is no dark field.</p>
+<div class="sw" id="sw"></div>
+<h3>Brand notes</h3>
+<div class="sw"><div><i style="background:#013E8A"></i><b>Marian #013E8A</b>Headings, primary action, icons</div><div><i style="background:#0076B5"></i><b>Honolulu #0076B5</b>Hover lines and fills</div><div><i style="background:#00B4D9"></i><b>Signal #00B4D9</b>One dot, one hairline</div><div><i style="background:#B42318"></i><b>Error #B42318</b>Error states only</div></div>
+<h3>Contrast ratios (WCAG 2.2 AA: 4.5:1 text, 3:1 UI and large text)</h3>
+<div class="tw"><table><tr><th>Pair</th><th>Ratio</th><th>Allowed use</th></tr>
+<tr><td>Ink <code>#212529</code> on <code>#FFFFFF</code> / <code>#F8F9FA</code></td><td>15.43 / 14.63</td><td class="ok">Body text (AAA)</td></tr>
+<tr><td><code>#495057</code> on <code>#FFFFFF</code> / <code>#F8F9FA</code></td><td>8.18 / 7.76</td><td class="ok">Secondary text (AAA)</td></tr>
+<tr><td>Marian <code>#013E8A</code> on <code>#FFFFFF</code> / <code>#F8F9FA</code></td><td>10.21 / 9.68</td><td class="ok">Headings, links, icons (AAA)</td></tr>
+<tr><td><code>#FFFFFF</code> on Marian · on Honolulu</td><td>10.21 · 4.93</td><td class="ok">Button text (AA)</td></tr>
+<tr><td>Honolulu <code>#0076B5</code> on <code>#FFFFFF</code> / <code>#F8F9FA</code></td><td>4.93 / 4.68</td><td class="ok">Hover text, lines and fills (AA)</td></tr>
+<tr><td><code>#6C757D</code> on <code>#FFFFFF</code> / <code>#F8F9FA</code></td><td>4.69 / 4.45</td><td>Input borders and icons (3:1). Not body text: fails 4.5:1 on <code>#F8F9FA</code></td></tr>
+<tr><td><code>#ADB5BD</code> on <code>#FFFFFF</code></td><td>2.07</td><td class="no">Decorative and disabled only. Never a boundary</td></tr>
+<tr><td>Signal <code>#00B4D9</code> on <code>#FFFFFF</code></td><td>2.46</td><td class="no">Never text or a boundary. Dot and hairline only, never alone as meaning</td></tr>
+<tr><td>Error <code>#B42318</code> on <code>#FFFFFF</code> / <code>#F8F9FA</code></td><td>6.57 / 6.24</td><td class="ok">Error text and border, always with an icon or message</td></tr>
+</table></div></div></section>
+
+<section class="sec alt" id="type"><div class="w"><p class="eye">03 · Grid &amp; type</p><h2>Twelve columns, eight-point rhythm</h2>
+<p class="lede">Content sits on a 12-column grid, 1200px maximum, 24px gutters, 24px margins (16px under 520px). Spacing steps: 8, 16, 24, 32, 48, 64, 96. Breakpoints: 600, 900, 1200.</p>
+<div class="tw"><table><tr><th>Role</th><th>Spec</th><th>Sample</th></tr>
+<tr><td>Display / H1</td><td>Constantia, Georgia · 700 · clamp 36–64 / 1.05</td><td style="font:700 32px/1.1 var(--d);color:var(--br)">From possibilities</td></tr>
+<tr><td>H2</td><td>Serif · 700 · clamp 28–40 / 1.12</td><td style="font:700 24px/1.2 var(--d);color:var(--br)">Eight capabilities</td></tr>
+<tr><td>H3 / card title</td><td>Inter · 600 · 18 / 1.4</td><td style="font:600 18px var(--b)">Business &amp; Strategy</td></tr>
+<tr><td>Body · lede</td><td>Inter · 400 · 16 / 1.6 · 18 / 1.65, 62ch max</td><td>Start with the outcome you need.</td></tr>
+<tr><td>UI label</td><td>Inter · 500–600 · 14</td><td style="font:600 14px var(--b)">Start a conversation</td></tr>
+<tr><td>Eyebrow</td><td>Inter · 600 · 12 · +0.14em · uppercase</td><td class="eye" style="margin:0">01 · Capabilities</td></tr></table></div></div></section>
+
+<section class="sec" id="components"><div class="w"><p class="eye">04 · Components &amp; states</p><h2>Every control, every state</h2>
+<p class="lede">Hover shifts colour to Honolulu or draws a hairline. Nothing moves more than 4px. Focus is always a 2px Honolulu ring, 3px offset. Static copies below are forced states for review.</p>
+<h3>Buttons</h3><div class="sp">
+<figure><button class="btn p" type="button">Start a conversation</button><figcaption>Primary · default</figcaption></figure>
+<figure><button class="btn p is-h" type="button">Start a conversation <span class="ar" aria-hidden="true">→</span></button><figcaption>Hover · Honolulu, arrow +4px</figcaption></figure>
+<figure><button class="btn p is-a" type="button">Start a conversation</button><figcaption>Active · 1px press</figcaption></figure>
+<figure><button class="btn p is-f" type="button">Start a conversation</button><figcaption>Focus-visible · ring</figcaption></figure>
+<figure><button class="btn p" type="button" disabled>Start a conversation</button><figcaption>Disabled · not focusable</figcaption></figure>
+<figure><button class="btn s" type="button">See the E-Principle</button><figcaption>Secondary · default</figcaption></figure>
+<figure><button class="btn s is-h" type="button">See the E-Principle</button><figcaption>Secondary · hover</figcaption></figure></div>
+<h3>Navigation link</h3><div class="sp"><figure><a class="nl" href="#components">Capabilities</a><figcaption>Default</figcaption></figure><figure><a class="nl is-h" href="#components">Capabilities</a><figcaption>Hover · hairline draws</figcaption></figure><figure><a class="nl" href="#components" aria-current="page">Capabilities</a><figcaption>Current page · 2px Marian</figcaption></figure></div>
+<h3>Capability card</h3><div class="sp" id="cc"></div>
+<h3>E-Principle stepper</h3>
+<div class="tl" role="tablist" aria-label="E-Principle stages" id="tl"></div><div class="pn" role="tabpanel" id="pn" aria-live="polite"></div>
+<p class="msg">Arrow keys move between stages. Completed stages fill Marian, the current stage carries the Signal dot. Under 600px the stages stack as a vertical list. Reduced motion has no animation to remove.</p>
+<h3>Form field</h3><div class="sp">
+<figure><label for="f1">Work email</label><input id="f1" class="in" type="email" placeholder="name@company.com"><p class="msg">We reply within two working days.</p></figure>
+<figure><label for="f2">Work email</label><input id="f2" class="in is-f" type="email" value="name@company"><p class="msg">Focus · ring plus Marian border</p></figure>
+<figure><label for="f3">Work email</label><input id="f3" class="in bad" type="email" value="name@company" aria-invalid="true" aria-describedby="e3"><p class="msg er" id="e3" role="alert">⚠ Enter a full address, such as name@company.com.</p></figure>
+<figure><label for="f4">Work email</label><input id="f4" class="in" type="email" disabled value="Sending…"><p class="msg">Disabled while submitting</p></figure></div>
+<h3>Accordion</h3><div style="max-width:720px"><details open><summary>Do you publish fixed prices?</summary><p>No. Engagements are scoped to the outcome, so we agree scope first and discuss commercial terms once it is clear.</p></details><details><summary>How do you handle confidentiality?</summary><p>An agreement is signed before any material is reviewed.</p></details></div>
+<h3>Empty and fallback states</h3><div class="g3">
+<div class="emp"><h4>Case studies are coming</h4><p>Client work appears here once each client has approved it. Until then, ask for a walkthrough of our own tools.</p><a class="btn s" href="#layout">Ask for a walkthrough</a></div>
+<div class="fb" role="alert"><h4>This section did not load</h4><p>Your connection may have dropped. The rest of the page is unaffected.</p><button class="btn s" type="button">Try again</button></div>
+<div class="emp"><h4>No results for “retail”</h4><p>Try a broader term, or browse all eight capabilities.</p><a class="btn s" href="#icons">Browse capabilities</a></div></div></div></section>
+
+<section class="sec alt" id="icons"><div class="w"><p class="eye">05 · Iconography</p><h2>Junctions and dots</h2>
+<p class="lede">Outlined lines on the hex-mesh angles (0°, 60°, 90°, 120°), 2px stroke on a 24px grid, round caps, two to five dots, exactly one Signal dot. Icons sit directly on the page with no badge behind them. Navigation icons always carry text.</p>
+<div class="cg" id="ig" style="background:var(--edge)"></div></div></section>
+
+<section class="sec" id="layout"><div class="w"><p class="eye">06 · Master layout</p><h2>One page, nine sections</h2>
+<p class="lede">The reference frame below uses the real components. Banding alternates between <code>#F8F9FA</code> and <code>#FFFFFF</code>; the page has no dark or coloured field.</p>
+<div class="fr"><div class="fh"><svg class="m" id="mesh" aria-hidden="true"></svg>
+<p class="eye">We Manifest™</p><p class="hd">Business transformation, from the first question to lasting change.</p>
+<p class="l">Strategy, operations, people, technology and AI, from the outcome you need through to delivery.</p>
+<div class="row"><a class="btn p" href="#layout">Start a conversation <span class="ar" aria-hidden="true">→</span></a><a class="btn s" href="#layout">See the E-Principle</a></div></div>
+<div class="ml"></div><div class="rg"><span>Islamabad</span><span>Maryland</span><span>London</span></div>
+<div class="cg" id="lg" style="border-width:1px 0 0"></div></div>
+<ol class="map"><li><b>Header</b><span><i style="background:var(--w)"></i>#FFFFFF · sticky, 64px</span></li>
+<li><b>Hero</b><span><i style="background:linear-gradient(var(--w),var(--s0))"></i>FFFFFF → F8F9FA</span></li>
+<li><b>Capabilities, 4×2 hairline grid</b><span><i style="background:var(--s0)"></i>#F8F9FA</span></li>
+<li><b>We Manifest statement</b><span><i style="background:var(--w)"></i>#FFFFFF</span></li>
+<li><b>E-Principle stepper</b><span><i style="background:var(--s0)"></i>#F8F9FA · Marian lines</span></li>
+<li><b>Proof, with empty state</b><span><i style="background:var(--w)"></i>#FFFFFF</span></li>
+<li><b>Engagements, three columns</b><span><i style="background:var(--s0)"></i>#F8F9FA</span></li>
+<li><b>Questions, accordion</b><span><i style="background:var(--w)"></i>#FFFFFF</span></li>
+<li><b>Closing call to action and footer</b><span><i style="background:var(--s0)"></i>#F8F9FA · Manifest line above</span></li></ol></div></section>
+
+<section class="sec alt" id="a11y"><div class="w"><p class="eye">07 · Accessibility</p><h2>WCAG AA, built in</h2>
+<div class="g3"><div><h3 style="margin-top:0">Structure</h3><ul class="ul"><li>Landmarks: header, nav, main, footer</li><li>One <code>h1</code>; one <code>h2</code> per section; <code>h3</code> per card or question</li><li>Skip link first in the tab order</li><li>Decorative mesh, ticker and icons are <code>aria-hidden</code></li></ul></div>
+<div><h3 style="margin-top:0">Interaction</h3><ul class="ul"><li>Targets at least 44px</li><li>Focus ring 2px Honolulu, 3px offset, never removed</li><li>Stepper uses tab roles and arrow keys</li><li>Errors use text and an icon, announced with <code>role="alert"</code></li></ul></div>
+<div><h3 style="margin-top:0">Motion &amp; colour</h3><ul class="ul"><li>Hover motion 200–350ms, 4px at most</li><li>Reduced motion removes all transitions and the traveling line</li><li>Colour is never the only signal</li><li>Every text and UI pair passes the ratios above</li></ul></div></div></div></section>
+</main>
+<footer><div class="w">EXCELLERS master visual layout v1.1 · Shades of white · We Manifest™</div></footer>
+<script>
+const $=s=>document.querySelector(s);
+const W=(x,y,s)=>{let p=[[x,y]];s.forEach(([a,l])=>{const q=p[p.length-1];p.push([+(q[0]+l*Math.cos(a*Math.PI/180)).toFixed(2),+(q[1]-l*Math.sin(a*Math.PI/180)).toFixed(2)])});return p};
+const L=p=>'<path d="M'+p.map(q=>q.join(' ')).join('L')+'"/>';
+const M=(pl,d,c)=>[pl.map(L).join(''),d,c];
+const I={strategy:(()=>{const a=W(4,14,[[0,6]]),b=W(10,14,[[60,6]]),c=W(10,14,[[-60,6]]);return M([a,b,c],[a[0],c[1]],[b[1]])})(),
+experience:['<path d="M4 8C4 14 8 17 12 17S20 14 20 8"/>',[[4,8],[20,8]],[[12,17]]],
+operations:['<circle cx="12" cy="12" r="7"/>',[[12,5],[5.94,15.5]],[[18.06,15.5]]],
+people:['<path d="M5 18a7 7 0 0 1 14 0M12 11V6"/>',[[5,18],[19,18]],[[12,6]]],
+technology:['<rect x="3" y="6" width="18" height="12" rx="6"/><path d="M9 12h6"/>',[[9,12]],[[15,12]]],
+growth:(()=>{const a=W(4,19,[[60,6],[0,4],[60,6],[0,4]]);return M([a],[a[0]],[a[4]])})(),
+industry:(()=>{const b=W(7,19,[[0,10]]),x=W(7,19,[[90,9]]),y=W(12,19,[[90,13]]),z=W(17,19,[[90,7]]);return M([b,x,y,z],[x[1],z[1]],[y[1]])})(),
+ai:(()=>{const a=W(12,12,[[90,7]]),b=W(12,12,[[210,7]]),c=W(12,12,[[330,7]]);return M([a,b,c],[a[1],b[1],c[1]],[[12,12]])})()};
+const N=[['strategy','Business &amp; Strategy','Direction, portfolio and operating-model choices.'],['experience','Customer Experience','Journeys, service design and the moments that shape loyalty.'],['operations','Operations','Process, performance and the mechanics of delivery.'],['people','People','Organisation, capability and leadership through change.'],['technology','Technology','Architecture, platforms and delivery engineering.'],['growth','Digital Growth','Acquisition, conversion and measurable growth online.'],['industry','Industry Solutions','Capabilities adapted to the realities of a sector.'],['ai','AI &amp; Automation','Applied intelligence where it removes real work.']];
+const ic=(k,s=40)=>{const[p,d,c]=I[k];return `<svg class="ic" width="${s}" height="${s}" viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${p}</g>${d.map(q=>`<circle cx="${q[0]}" cy="${q[1]}" r="2.4" fill="currentColor"/>`).join('')}${c.map(q=>`<circle class="cd" cx="${q[0]}" cy="${q[1]}" r="2.4"/>`).join('')}</svg>`};
+const card=(i,x='',t='a',dis)=>{const n=N[i];return `<${t} class="cap ${x}" ${t=='a'?'href="#icons"':''} ${dis?'aria-disabled="true"':''}>${ic(n[0])}<h3>${n[1]}</h3><p>${n[2]}</p>${dis?'<small>Coming soon</small>':''}</${t}>`};
+$('#ig').innerHTML=N.map((n,i)=>card(i,'','div')).join('');
+$('#lg').innerHTML=N.map((n,i)=>card(i)).join('');
+$('#cc').innerHTML=[['','Default'],['is-h','Hover · line draws, dot grows'],['is-a','Pressed · band fill'],['','Disabled · no destination yet',1]].map((s,k)=>`<figure class="one">${card(0,s[0],'a',s[2])}<figcaption>${s[1]}</figcaption></figure>`).join('');
+$('#sw').innerHTML=[['FFFFFF','Band · header'],['F8F9FA','Canvas'],['E9ECEF','Pressed · code'],['DEE2E6','Hairline'],['CED4DA','Mesh'],['ADB5BD','Disabled'],['6C757D','UI edge'],['495057','Muted text'],['212529','Ink']].map(c=>`<div><i style="background:#${c[0]}"></i><b>#${c[0]}</b>${c[1]}</div>`).join('');
+(()=>{const R=28;let t='';const hx=(x,y)=>[0,1,2,3,4,5].map(i=>{const a=Math.PI/3*i;return[x+R*Math.cos(a),y+R*Math.sin(a)]});for(let c=-1;c<14;c++)for(let r=-1;r<11;r++){const v=hx(c*1.5*R,r*1.732*R+(c%2?.866*R:0));for(let k=0;k<6;k++){const a=v[k],b=v[(k+1)%6],g=.2;t+=`<line x1="${(a[0]+(b[0]-a[0])*g).toFixed(1)}" y1="${(a[1]+(b[1]-a[1])*g).toFixed(1)}" x2="${(b[0]-(b[0]-a[0])*g).toFixed(1)}" y2="${(b[1]-(b[1]-a[1])*g).toFixed(1)}"/>`}}$('#mesh').setAttribute('viewBox','0 0 520 420');$('#mesh').innerHTML=t+'<circle cx="318" cy="170" r="4" fill="#00B4D9" stroke="none"/>'})();
+const S=[['Explore','What is possible, and what is actually going on?'],['Enlighten','What does the evidence say, and what should we decide?'],['Execute','How do we deliver this without losing the intent?'],['Empower','Who carries this forward when we step back?'],['Evolve','What has to change next as conditions change?']];
+let cur=1;const tl=$('#tl'),pn=$('#pn');
+function rs(f){tl.innerHTML=S.map((s,i)=>`<button class="tb ${i<cur?'dn':''}" role="tab" id="t${i}" aria-selected="${i==cur}" aria-controls="pn" tabindex="${i==cur?0:-1}"><i></i>${i+1} · ${s[0]}</button>`).join('');pn.setAttribute('aria-labelledby','t'+cur);pn.innerHTML=`<p class="eye">Stage 0${cur+1} · the question this stage answers</p><p class="q">${S[cur][1]}</p>`;if(f)$('#t'+cur).focus()}
+tl.addEventListener('click',e=>{const b=e.target.closest('.tb');if(b){cur=+b.id.slice(1);rs(1)}});
+tl.addEventListener('keydown',e=>{if(e.key=='ArrowRight'||e.key=='ArrowLeft'){e.preventDefault();cur=(cur+(e.key=='ArrowRight'?1:4))%5;rs(1)}});rs();
+</script></body></html>

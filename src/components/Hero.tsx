@@ -62,6 +62,16 @@ export default function Hero() {
       {/* copy — kept to the left half from lg up so nothing runs under the globe */}
       <div className="shell relative">
         <div className="lg:max-w-[54%]">
+          <motion.p
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.1 }}
+            className="eyebrow mb-4"
+          >
+            {hero.eyebrow}
+            <sup className="ml-[0.15em] text-[0.6em] tracking-normal">&trade;</sup>
+          </motion.p>
+
           <motion.h1
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}

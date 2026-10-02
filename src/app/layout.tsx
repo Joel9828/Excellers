@@ -53,8 +53,11 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#060912",
-  colorScheme: "dark",
+  // The canvas is white. Declaring a dark scheme here made browser chrome
+  // and OS dark mode disagree with the page — flagged in the master layout
+  // audit of the live site.
+  themeColor: "#ffffff",
+  colorScheme: "light",
 };
 
 export default function RootLayout({

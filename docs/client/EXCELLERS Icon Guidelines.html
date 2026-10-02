@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>EXCELLERS Icon Guidelines</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff;--fg:#1a1d24;--mut:#54595F;--line:#D3D9E5;--card:#F4F6FA;--m:#013E8A;--h:#0076B5;--lat:#B9CCE0;--hd:'Constantia','Georgia',serif;--bd:'Inter',system-ui,sans-serif;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b1220;--fg:#e8ecf4;--mut:#a9b3c6;--line:#22304a;--card:#111b2e;--m:#7FD7FF;--lat:#2f4566}}
+:root[data-theme="dark"]{--bg:#0b1220;--fg:#e8ecf4;--mut:#a9b3c6;--line:#22304a;--card:#111b2e;--m:#7FD7FF;--lat:#2f4566}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 var(--bd)}
+.w{max-width:960px;margin:0 auto;padding:0 20px}
+header{background:#013E8A;color:#fff;padding:64px 0 44px}
+header h1{font:700 clamp(32px,6vw,54px)/1.1 var(--hd);margin:0 0 10px}header p{margin:0;color:#cfe6f5;max-width:620px}
+nav{position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);border-bottom:1px solid var(--line);overflow-x:auto;white-space:nowrap;z-index:3}
+nav a{display:inline-block;padding:12px 14px;color:var(--mut);text-decoration:none;font-size:14px;font-weight:600}
+section{padding:48px 0;border-bottom:1px solid var(--line)}
+.eye{font:600 12px var(--bd);letter-spacing:.14em;color:var(--h);text-transform:uppercase}
+h2{font:700 clamp(26px,4vw,36px)/1.15 var(--hd);color:var(--m);margin:6px 0 16px}h3{font-size:18px;margin:24px 0 8px}
+p{margin:0 0 12px}.mut{color:var(--mut)}
+.g{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px}.card b{display:block;margin-bottom:4px}
+.t{width:100%;border-collapse:collapse;font-size:14px}.t th,.t td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+.t th{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--mut)}
+.sw{display:inline-block;width:14px;height:14px;border-radius:3px;vertical-align:-2px;margin-right:6px;border:1px solid var(--line)}
+.do li::marker{color:#008000}.dont li::marker{color:#c00}ul{padding-left:20px;margin:0}
+.fig{display:flex;gap:20px;flex-wrap:wrap;align-items:center;margin:14px 0;color:var(--mut);font-size:12px;text-align:center}
+code{background:var(--card);padding:1px 6px;border-radius:4px;font-size:13px}
+footer{padding:28px 0;color:var(--mut);font-size:13px}
+</style></head><body>
+<header><div class="w"><h1>Icon Guidelines</h1><p>EXCELLERS · From Possibilities to Progress. Icons drawn like architecture: a hex mesh for structure, confident lines, dots at the joints, and one Cyan dot where the idea manifests. See the showcase file for the live system.</p></div></header>
+<nav><div class="w"><a href="#s1">1 Style &amp; concept</a><a href="#s2">2 Technical specs</a><a href="#s3">3 Colour &amp; contrast</a><a href="#s4">4 Usage contexts</a><a href="#s5">5 Do's &amp; don'ts</a></div></nav>
+<main class="w">
+
+<section id="s1"><div class="eye">01</div><h2>Iconography style &amp; concept</h2>
+<p><b>Decision: minimal outlined line icons, built from junctions and dots.</b> Outline, not filled, not duotone. The only solid shapes are dots. Detail is kept low so every icon has room to breathe: the empty space is part of the drawing.</p>
+<div class="fig" id="fig"></div>
+<div class="g">
+<div class="card"><b>1 · Junction (hex mesh)</b>The hex mesh's open three-way joint becomes the brand's structural unit. Strokes meet at 120°, or run along the mesh angles (0°, 60°, 90°, 120°). Lines may end only on a dot or on another line.</div>
+<div class="card"><b>2 · Dot (dot &amp; line)</b>Dots mark joints and ends: a possibility, a decision, an outcome. Each icon has two to five dots. Exactly one is Pacific Cyan, the manifest dot, placed where the idea becomes real.</div>
+<div class="card"><b>3 · Draw-up (architecture)</b>Icons are developed like an elevation drawing: lattice, hairline skeleton, final form, then signature dots. Only the final form ships. The hairline weight is reserved for construction and illustration.</div>
+<div class="card"><b>4 · Density (graduated line)</b>Lines that thicken into solid blocks express progress and momentum. Used for patterns, loaders and section backgrounds, never inside an icon.</div>
+<div class="card"><b>5 · Mesh</b>The open-joint hex mesh is the brand texture. It appears in layouts and illustrations. It never appears as a badge or frame around an icon.</div></div>
+<h3>E-Principle cluster</h3>
+<p>The five stages are shown as a seven-position honeycomb cluster of dots. Unlit positions are hollow ghosts (possibilities). Each stage connects more of them, from one dot to a full network, and the dots added in a stage are Cyan. Use these glyphs for the E-Principle only.</p>
+<h3>Reserved marks</h3>
+<p>The horse symbol is the trademark. It is never redrawn as an icon or placed inside the mesh.</p></section>
+
+<section id="s2"><div class="eye">02</div><h2>Technical specifications</h2>
+<table class="t"><tr><th>Property</th><th>Specification</th></tr>
+<tr><td>Master grid</td><td>24×24px; 16×16px core; 20×20px live area (2px padding). Exports at 16, 24, 32 and 48.</td></tr>
+<tr><td>Construction lattice</td><td>Flat-top hex mesh, radius 4px, as a visible guide layer only.</td></tr>
+<tr><td>Angles</td><td>Straight strokes at 0°, 60°, 90° and 120°. No 30° or 45° strokes. Arcs and loops are allowed where the object is round (a circle, an arch).</td></tr>
+<tr><td>Stroke</td><td>2px at 24px; 1.5px at 16px; 2.5px at 32px; 3px at 48px. One weight per icon. Hairline 0.35px is construction-only.</td></tr>
+<tr><td>Caps &amp; joins</td><td>Round caps and joins. Outer radius 2px on containers.</td></tr>
+<tr><td>Dot</td><td>Radius 1.2× stroke (2.4px at 24px). Solid. Two to five per brand icon; UI icons may use one or two.</td></tr>
+<tr><td>Manifest dot</td><td>Pacific Cyan, same size as other dots. Exactly one per brand icon, none in UI icons.</td></tr>
+<tr><td>Breathing room</td><td>3px minimum clearance between a dot's edge and any unrelated stroke. Ink should cover no more than about 35% of the live area. Leave at least 8px around an icon.</td></tr>
+<tr><td>Containers</td><td>Circle or pill only, as a boundary meaning "context". No hexagon badges.</td></tr>
+<tr><td>Optical alignment</td><td>Centre on visual weight. Round shapes may overshoot the keyline by 1px. Keep dot-to-dot spacing even.</td></tr>
+<tr><td>Export</td><td>SVG, strokes via <code>currentColor</code>, dots as separate circles with their own class. Outline strokes for print and packaging.</td></tr></table>
+<h3>Pattern specifications</h3>
+<table class="t"><tr><th>Device</th><th>Rule</th></tr>
+<tr><td>Open-joint mesh</td><td>Flat-top cells, gap of about 20% of the edge at every vertex, stroke 1.5–2.5px, optional dots at a few vertices (one in twenty-five Cyan).</td></tr>
+<tr><td>Density gradient</td><td>45° dash grid, weight growing from 0.5px to near-solid along one diagonal. One direction per layout.</td></tr>
+<tr><td>Dot rhythm</td><td>Graduated dots swelling into dot-and-bar links at the centre, then easing out. Use for dividers and progress.</td></tr></table></section>
+
+<section id="s3"><div class="eye">03</div><h2>Colour &amp; contrast rules</h2>
+<table class="t"><tr><th>State</th><th>Light mode</th><th>Dark mode</th></tr>
+<tr><td><b>Default</b></td><td><span class="sw" style="background:#013E8A"></span>Marian Blue lines and dots · <span class="sw" style="background:#00B4D9"></span>Cyan manifest dot</td><td>White lines and dots · Cyan dot</td></tr>
+<tr><td><b>Hover / focus</b></td><td><span class="sw" style="background:#0076B5"></span>Honolulu lines and dots; manifest dot grows 20%. Keyboard focus adds a 2px Honolulu outline, 2px offset.</td><td><span class="sw" style="background:#7FD7FF"></span>#7FD7FF lines and dots; dot grows.</td></tr>
+<tr><td><b>Active / selected</b></td><td>Marian, larger manifest dot with a thin Cyan ring.</td><td>White, larger dot with a Cyan ring.</td></tr>
+<tr><td><b>Inactive</b></td><td><span class="sw" style="background:#54595F"></span>Slate for lines and dots, including the manifest dot.</td><td>#a9b3c6.</td></tr>
+<tr><td><b>Disabled</b></td><td>Slate at 40% opacity.</td><td>#a9b3c6 at 40%.</td></tr></table>
+<h3>Contrast rules</h3>
+<ul class="do"><li>Lines and dots that carry meaning meet 3:1 against the background. Default and inactive states do.</li><li>Cyan is for the manifest dot only. It is never a line colour on white or Mist (about 2.4:1).</li><li>The manifest dot never carries meaning alone: state is also shown by line colour or the ring.</li><li>One-colour use: black, white or Marian, with the manifest dot in the same colour.</li><li>Status icons use one status colour for lines and dots.</li><li>Standalone icons need an accessible name; navigation icons need text labels.</li></ul></section>
+
+<section id="s4"><div class="eye">04</div><h2>Usage contexts</h2>
+<table class="t"><tr><th>Touchpoint</th><th>Size</th><th>Behaviour</th></tr>
+<tr><td><b>Mobile navigation</b></td><td>24–28px, 44px touch target</td><td>Five items maximum, 12px Inter labels. Inactive: Slate. Active: Marian with a ringed manifest dot.</td></tr>
+<tr><td><b>Web buttons</b></td><td>20px in 48px buttons</td><td>8px gap to the label. On Marian fill: white lines, Cyan dot. Arrow trails the label and moves 4px on hover.</td></tr>
+<tr><td><b>Feature &amp; capability blocks</b></td><td>48–64px</td><td>Icon sits directly on the page, optionally over the open-joint mesh in a corner. No badge behind it.</td></tr>
+<tr><td><b>E-Principle section</b></td><td>64–120px</td><td>Cluster glyphs. One more position connects per stage as the reader progresses.</td></tr>
+<tr><td><b>Small UI (tables, tags)</b></td><td>16px</td><td>Use the 16px master with 1.5px stroke. Drop the manifest dot if it would touch a line.</td></tr>
+<tr><td><b>Progress &amp; loaders</b></td><td>Full width</td><td>Dot rhythm or density gradient. Never an icon.</td></tr>
+<tr><td><b>Packaging &amp; print</b></td><td>12mm min., 0.75pt stroke min.</td><td>One colour only, manifest dot in the same colour. Clear space of two lattice cells.</td></tr>
+<tr><td><b>App icons &amp; favicons</b></td><td>32–1024px</td><td>White lines and Cyan dot on a Marian-to-Honolulu rounded square, 3px stroke at 48px. At 24px and below use a single line and dot. Never replaces the trademark symbol.</td></tr>
+<tr><td><b>Social &amp; slides</b></td><td>32–64px</td><td>Maximum three icons per slide or post. Use the density gradient or mesh as background.</td></tr></table></section>
+
+<section id="s5"><div class="eye">05</div><h2>Do's and don'ts</h2>
+<div class="g"><div><h3 style="margin-top:0">Do</h3><ul class="do"><li>Draw on the lattice at 0°, 60°, 90° and 120°</li><li>Keep one stroke weight per icon and set</li><li>Place one Cyan manifest dot at the focal point</li><li>End every line on a dot or a junction</li><li>Leave generous empty space around dots</li><li>Develop new icons through the four draw-up steps</li><li>Use mesh, density and rhythm for texture and progress</li></ul></div>
+<div><h3 style="margin-top:0">Don't</h3><ul class="dont"><li>Wrap icons in hexagon badges or frames</li><li>Use more than five dots, or more than one Cyan dot</li><li>Leave loose line ends or off-angle strokes</li><li>Oversize or resize dots independently of the stroke</li><li>Crowd dots closer than 3px to other strokes</li><li>Mix stroke weights, add fills, shadows or gradients</li><li>Use unapproved colours or Cyan lines on white</li><li>Use density or mesh patterns as icons</li><li>Redraw the horse symbol as an icon</li></ul></div></div>
+<p class="mut" style="margin-top:14px">Visual examples of correct and incorrect use are in the showcase.</p></section>
+</main><footer><div class="w">EXCELLERS Icon Guidelines v4.0 · built on the EXCELLERS Brand Guidelines palette and typography.</div></footer>
+<script>
+const hx=(x,y,r,a0)=>[0,1,2,3,4,5].map(i=>{const a=Math.PI/3*i+(a0||0);return [x+r*Math.cos(a),y+r*Math.sin(a)]});
+function mesh(w,h,R,col,sw,g){let t='';for(let c=-1;c<w/(1.5*R)+2;c++)for(let r=-1;r<h/(1.732*R)+2;r++){const cx=c*1.5*R,cy=r*1.732*R+(c%2?.866*R:0),v=hx(cx,cy,R);for(let k=0;k<6;k++){const a=v[k],b=v[(k+1)%6];t+=`<line x1="${a[0]+(b[0]-a[0])*g}" y1="${a[1]+(b[1]-a[1])*g}" x2="${b[0]-(b[0]-a[0])*g}" y2="${b[1]-(b[1]-a[1])*g}"/>`}}return `<g stroke="${col}" stroke-width="${sw}" stroke-linecap="round">${t}</g>`}
+function density(n,s){let o='';for(let r=0;r<n;r++)for(let c=0;c<n;c++){const t=Math.pow((r+(n-1-c))/(2*(n-1)),1.3),w=.5+t*s*.62,x=c*s+s/2,y=r*s+s/2,d=s*.4;o+=`<line x1="${x-d}" y1="${y+d}" x2="${x+d}" y2="${y-d}" stroke="var(--m)" stroke-width="${w.toFixed(2)}"/>`}return o}
+const dot=(x,y,c)=>`<circle cx="${x}" cy="${y}" r="2.4" fill="${c||'var(--m)'}"/>`;
+const icon=`<svg width="120" height="120" viewBox="0 0 24 24" style="border:1px solid var(--line);border-radius:8px">${mesh(24,24,4,'var(--lat)',.1,0)}<g fill="none" stroke="var(--m)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14H10M10 14L13 8.8M10 14L13 19.2"/></g>${dot(4,14)}${dot(13,19.2)}${dot(13,8.8,'#00B4D9')}</svg>`;
+const P=13,pos=k=>k?[32+P*Math.cos(Math.PI/3*(k-1)),32+P*Math.sin(Math.PI/3*(k-1))]:[32,32];
+const ST=[{d:[0],n:[0],l:[]},{d:[0,1],n:[1],l:[[0,1]]},{d:[0,1,4],n:[4],l:[[0,1],[0,4]]},{d:[0,1,4,2,5],n:[2,5],l:[[0,1],[0,4],[0,2],[0,5]]},{d:[0,1,2,3,4,5,6],n:[3,6],l:[[0,1],[0,2],[0,3],[0,4],[0,5],[0,6],[1,2],[2,3],[3,4],[4,5],[5,6],[6,1]]}];
+function glyph(i){const t=ST[i];let o='';for(let k=0;k<7;k++){const [x,y]=pos(k);if(!t.d.includes(k))o+=`<circle cx="${x}" cy="${y}" r="2.6" fill="none" stroke="var(--lat)" stroke-width="1.3"/>`}
+t.l.forEach(([a,b])=>{const A=pos(a),B=pos(b);o+=`<line x1="${A[0]}" y1="${A[1]}" x2="${B[0]}" y2="${B[1]}" stroke="var(--m)" stroke-width="3.4" stroke-linecap="round"/>`});
+t.d.forEach(k=>{const [x,y]=pos(k);o+=`<circle cx="${x}" cy="${y}" r="5.2" fill="${t.n.includes(k)?'#00B4D9':'var(--m)'}"/>`});return `<svg width="72" height="72" viewBox="0 0 64 64">${o}</svg>`}
+document.getElementById('fig').innerHTML=`<div>${icon}<br>Junction + dots on the lattice</div><div><svg width="120" height="120" viewBox="0 0 24 24">${mesh(24,24,5,'var(--m)',.9,.22)}</svg><br>Open-joint mesh</div><div><svg width="120" height="120" viewBox="0 0 60 60">${density(6,10)}</svg><br>Density gradient</div>`+['Explore','Enlighten','Execute','Empower','Evolve'].map((n,i)=>`<div>${glyph(i)}<br>${n}</div>`).join('');
+</script></body></html>

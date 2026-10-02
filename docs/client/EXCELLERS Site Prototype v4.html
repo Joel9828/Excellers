@@ -1,0 +1,160 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light"><meta name="theme-color" content="#FFFFFF">
+<title>EXCELLERS — Prototype v3</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--s0:#F8F9FA;--s1:#E9ECEF;--s2:#DEE2E6;--s3:#CED4DA;--s4:#ADB5BD;--s5:#6C757D;--s6:#495057;--s8:#212529;--w:#fff;--bg:var(--s0);--line:var(--s2);--edge:var(--s5);--mut:var(--s6);--fg:var(--s8);--br:#013E8A;--hv:#0076B5;--sg:#00B4D9;--er:#B42318;--d:Constantia,Georgia,serif;--b:Inter,system-ui,sans-serif;--ez:cubic-bezier(.2,.7,.2,1);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box}html{scroll-padding-top:80px;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 16px/1.6 var(--b);-webkit-font-smoothing:antialiased}
+.w{max-width:1200px;margin:0 auto;padding:0 24px}
+.sk{position:absolute;left:-999px}.sk:focus{left:8px;top:8px;z-index:9;background:var(--br);color:var(--s0);padding:12px 16px}
+:focus-visible{outline:2px solid var(--hv);outline-offset:3px}
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--w);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;gap:16px;height:64px}
+.lg{font:700 15px var(--b);letter-spacing:.18em;color:var(--br);text-decoration:none}
+nav{margin-left:auto;min-width:0}nav ul{display:flex;gap:4px;list-style:none;margin:0;padding:0;align-items:center;overflow-x:auto}
+.nl{position:relative;display:inline-flex;align-items:center;min-height:44px;padding:0 12px;font:500 14px var(--b);color:var(--mut);text-decoration:none;white-space:nowrap}
+.nl::after{content:"";position:absolute;left:12px;right:12px;bottom:8px;height:1px;background:var(--hv);transform:scaleX(0);transform-origin:left;transition:transform .25s var(--ez)}
+.nl:hover,.nl[aria-current=true]{color:var(--fg)}.nl:hover::after{transform:scaleX(1)}.nl[aria-current=true]{color:var(--br)}.nl[aria-current=true]::after{transform:scaleX(1);height:2px;background:var(--br)}
+.sec{padding:96px 0;border-bottom:1px solid var(--line)}.alt{background:var(--w)}
+.eye{font:600 12px var(--b);letter-spacing:.14em;text-transform:uppercase;color:var(--mut);margin:0 0 12px}
+h1,.hd{font:700 clamp(36px,5.5vw,64px)/1.05 var(--d);letter-spacing:-.015em;color:var(--br);margin:0 0 24px;max-width:18ch}
+h2{font:700 clamp(28px,3.4vw,40px)/1.12 var(--d);color:var(--br);margin:0 0 16px}
+.lede{font-size:18px;line-height:1.65;color:var(--mut);max-width:62ch;margin:0 0 40px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:48px;padding:0 24px;border-radius:4px;border:1px solid transparent;font:600 14px var(--b);letter-spacing:.02em;cursor:pointer;text-decoration:none;transition:background-color .2s,border-color .2s,color .2s,transform .1s}
+.p{background:var(--br);color:var(--s0)}.p:hover{background:var(--hv)}.p:active{background:var(--br);transform:translateY(1px)}
+.s{border-color:var(--edge);color:var(--fg);background:transparent}.s:hover{border-color:var(--br);color:var(--br)}
+.btn:disabled{background:var(--line);color:var(--s4);cursor:not-allowed}
+.ar{transition:transform .2s var(--ez)}.btn:hover .ar{transform:translateX(4px)}
+.row{display:flex;flex-wrap:wrap;gap:12px}
+.hero{position:relative;overflow:hidden;background:linear-gradient(180deg,var(--w),var(--s0));padding:112px 0 80px}
+.hero svg.m{position:absolute;right:-40px;top:-20px;width:620px;height:520px;stroke:var(--s3);stroke-width:1;fill:none;stroke-linecap:round;pointer-events:none;-webkit-mask-image:linear-gradient(270deg,#000,transparent 85%);mask-image:linear-gradient(270deg,#000,transparent 85%)}
+.hero .w{position:relative}.hero p.l{max-width:50ch;color:var(--mut);margin:0 0 32px;font-size:18px}
+.ml{height:1px;background:linear-gradient(90deg,transparent,var(--sg),transparent);opacity:.7}
+.rg{display:flex;flex-wrap:wrap;gap:8px 32px;padding:16px 0;font-size:14px;color:var(--mut);border-bottom:1px solid var(--line);background:var(--w)}
+.cg{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.cap{position:relative;display:flex;flex-direction:column;gap:16px;min-height:208px;padding:28px 24px;background:var(--bg);color:var(--fg);text-decoration:none;overflow:hidden}
+.cap .ic{color:var(--br);transition:color .2s}.cap .cd{fill:var(--sg);transition:r .2s}
+.cap::before{content:"";position:absolute;left:0;right:0;top:0;height:2px;background:var(--hv);transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ez)}
+.cap:hover::before,.cap:focus-visible::before{transform:scaleX(1)}.cap:hover .ic{color:var(--hv)}.cap:hover .cd{r:3.2}.cap:active{background:var(--s1)}
+.cap h3{margin:auto 0 0;font:600 18px/1.4 var(--b)}.cap p{margin:0;font-size:14px;color:var(--mut)}
+.cap[aria-disabled=true]{cursor:not-allowed}.cap[aria-disabled=true] .ic{color:var(--s4)}.cap[aria-disabled=true] .cd{fill:var(--s4)}
+.cap small{font:600 11px var(--b);letter-spacing:.1em;text-transform:uppercase;color:var(--mut)}
+.stmt{font:700 clamp(26px,3.6vw,44px)/1.15 var(--d);color:var(--br);max-width:24ch;margin:0 0 20px}
+.tl{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 16px}
+.tb{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0 16px;border:1px solid var(--edge);border-radius:4px;background:transparent;color:var(--fg);font:500 14px var(--b);cursor:pointer;transition:border-color .2s,color .2s}
+.tb i{width:8px;height:8px;border-radius:50%;border:1.5px solid var(--edge);transition:all .2s}
+.tb:hover{border-color:var(--br);color:var(--br)}.tb[aria-selected=true]{border-color:var(--br);color:var(--br);font-weight:600}.tb[aria-selected=true] i{background:var(--sg);border-color:var(--sg)}.tb.dn i{background:var(--br);border-color:var(--br)}
+.pn{padding:32px;border:1px solid var(--line);border-radius:4px;background:var(--w);max-width:680px}.pn p{margin:0}.pn .q{font:700 26px/1.3 var(--d);color:var(--br);margin:8px 0 12px}.pn .k{font-size:13px;color:var(--mut);margin-top:16px}
+.emp{padding:32px 28px;border:1px dashed var(--edge);border-radius:4px;background:var(--bg);max-width:560px}.emp h3{margin:0 0 6px;font:600 18px var(--b)}.emp p{margin:0 0 16px;font-size:14px;color:var(--mut)}
+.tools{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;margin-bottom:32px}.tools b{display:block}.tools span{font-size:14px;color:var(--mut)}
+.eg{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.eg>div{background:var(--bg);padding:32px 28px}.eg h3{font:700 22px var(--d);color:var(--br);margin:0 0 4px}.eg ul{padding-left:18px;color:var(--mut);font-size:14px;margin:16px 0 24px}
+.inall{margin-top:24px;font-size:14px;color:var(--mut)}
+details{border-top:1px solid var(--line)}details:last-of-type{border-bottom:1px solid var(--line)}
+summary{display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:56px;padding:12px 0;font:600 16px var(--b);cursor:pointer;list-style:none}
+summary::-webkit-details-marker{display:none}summary::after{content:"+";font:400 22px var(--b);color:var(--br);transition:transform .2s var(--ez)}
+summary:hover{color:var(--br)}details[open] summary::after{transform:rotate(45deg)}details p{margin:0 0 16px;color:var(--mut);max-width:60ch}
+label{display:block;font:600 14px var(--b);margin-bottom:8px}
+.in{width:100%;max-width:360px;height:48px;padding:0 16px;font:400 16px var(--b);color:var(--fg);background:var(--w);border:1px solid var(--edge);border-radius:4px;transition:border-color .2s}
+.in:hover{border-color:var(--fg)}.in:focus{outline:2px solid var(--hv);outline-offset:2px;border-color:var(--br)}.in.bad{border:2px solid var(--er)}
+.msg{font-size:13px;margin:8px 0 0;color:var(--mut)}.msg.er{color:var(--er);font-weight:500}
+footer{padding:32px 0;font-size:13px;color:var(--mut);background:var(--bg)}footer .w{display:flex;flex-wrap:wrap;gap:8px 32px;justify-content:space-between}
+@media(max-width:900px){.cg{grid-template-columns:repeat(2,1fr)}.eg{grid-template-columns:1fr}.hero svg.m{opacity:.6}}
+@media(max-width:600px){.cg{grid-template-columns:1fr}.sec{padding:64px 0}.w{padding:0 16px}.lg{letter-spacing:.1em}.tl{flex-direction:column}.tb{width:100%}nav li:not(:last-child){display:none}}
+@media(prefers-reduced-motion:no-preference){.ml{background-size:200% 100%;animation:tr 8s var(--ez) infinite}@keyframes tr{0%{background-position:100% 0}70%,100%{background-position:-100% 0}}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{transition-duration:.01ms!important;animation:none!important;scroll-behavior:auto!important}}
+
+.tb{padding:0 16px 0 10px}.tb svg{width:30px;height:30px}.tb i{display:none}
+.pn{display:grid;grid-template-columns:120px 1fr;gap:28px;align-items:center;max-width:760px}.pn svg{width:120px;height:120px}
+.sys{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:48px;align-items:center}
+.lst{display:grid;gap:0;border-top:1px solid var(--line)}
+.li{display:flex;gap:14px;align-items:center;width:100%;text-align:left;min-height:56px;padding:10px 12px;background:transparent;border:0;border-bottom:1px solid var(--line);color:var(--fg);font:600 16px var(--b);cursor:pointer;transition:background .2s,color .2s}
+.li svg{flex:none;color:var(--br)}.li .cd{fill:var(--sg)}.li:hover{color:var(--br);background:var(--w)}.li[aria-pressed=true]{background:var(--w);color:var(--br);box-shadow:inset 3px 0 0 var(--br)}
+.sd{margin-top:20px;font-size:15px;color:var(--mut);min-height:84px}.sd b{color:var(--fg)}
+#sy{width:100%;max-width:460px;margin:0 auto;display:block}#sy line{stroke:var(--s3);stroke-width:1;transition:stroke .25s,stroke-width .25s}#sy line.on{stroke:var(--hv);stroke-width:1.8}
+#sy .nd circle.o{fill:var(--w);stroke:var(--edge);stroke-width:1;transition:stroke .2s}#sy .nd{cursor:pointer;color:var(--br)}#sy .nd.on circle.o{stroke:var(--br);stroke-width:2}#sy .nd.on{color:var(--hv)}
+#sy .cd{fill:var(--sg)}#sy text{font:600 10px var(--b);fill:var(--mut);text-anchor:middle}
+.tri{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:32px;margin-top:40px}.tri b{display:block;font:700 28px var(--d);color:var(--br)}.tri span{color:var(--mut);font-size:15px}
+.five{display:flex;flex-wrap:wrap;gap:0;border:1px solid var(--line);margin-top:8px}.five div{flex:1 1 140px;padding:18px 16px;border-right:1px solid var(--line);font:600 15px var(--b);color:var(--br);display:flex;align-items:center;gap:10px}.five div:last-child{border-right:0}.five i{width:8px;height:8px;border-radius:50%;background:var(--br);opacity:calc(.25 + var(--n)*.15)}.five div:last-child i{background:var(--sg);opacity:1}
+.aud{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}.aud div{background:var(--bg);padding:24px 20px}.aud b{display:block;font:600 16px var(--b);margin-bottom:6px}.aud span{font-size:14px;color:var(--mut)}
+@media(max-width:900px){.sys{grid-template-columns:1fr}.pn{grid-template-columns:1fr}.pn svg{width:88px;height:88px}}
+@media(max-width:600px){.tb{width:100%}}
+</style></head><body>
+<a class="sk" href="#main">Skip to content</a>
+<header class="top"><div class="w bar"><a class="lg" href="#top">EXCELLERS</a>
+<nav aria-label="Sections"><ul><li><a class="nl" href="#capabilities">Capabilities</a></li><li><a class="nl" href="#principle">E-Principle</a></li><li><a class="nl" href="#engagements">Engagements</a></li><li><a class="nl" href="#insights">Insights</a></li><li><a class="btn p" href="#contact" style="height:40px">Start a conversation</a></li></ul></nav></div></header>
+<main id="main">
+<section class="hero" id="top"><svg class="m" id="mesh" aria-hidden="true"></svg><div class="w"><p class="eye">01 · We Manifest™</p><h1>From Possibilities to Progress.</h1><p class="l">EXCELLERS is a business transformation partner. We turn opportunities, challenges and ideas into clearer decisions, stronger systems and measurable progress.</p><div class="row"><a class="btn p" href="#contact">Start a conversation <span class="ar" aria-hidden="true">→</span></a><a class="btn s" href="#principle">See how we manifest <span class="ar" aria-hidden="true">→</span></a></div></div></section>
+<div class="ml"></div>
+
+<section class="sec alt" id="tension"><div class="w"><p class="eye">02 · The tension</p><h2>Possibility is not progress.</h2><p class="lede">Most ambitions stall between the idea and the result. Five steps close that gap.</p>
+<div class="five"><div style="--n:1"><i></i>Clarity</div><div style="--n:2"><i></i>Structure</div><div style="--n:3"><i></i>Action</div><div style="--n:4"><i></i>Capability</div><div style="--n:5"><i></i>Progress</div></div></div></section>
+
+<section class="sec" id="what" style="background:var(--bg)"><div class="w"><p class="eye">03 · What we do</p><h2>We turn complexity into a way forward.</h2>
+<div class="tri"><div><b>Clarify</b><span>Name what matters and what is in the way.</span></div><div><b>Build</b><span>Give the opportunity structure and a plan.</span></div><div><b>Advance</b><span>Deliver, and leave your team able to carry on.</span></div></div></div></section>
+
+<section class="sec alt" id="capabilities"><div class="w"><p class="eye">04 · Capabilities</p><h2>The right capability. The right moment.</h2><p class="lede">Eight capabilities, one system. Each strengthens the others through the same five-stage method. Select one to see it connect.</p>
+<div class="sys"><div><div class="lst" id="lst"></div><p class="sd" id="sd" aria-live="polite"></p></div><svg id="sy" viewBox="0 0 400 400" aria-hidden="true"></svg></div></div></section>
+
+<section class="sec" id="manifest" style="background:var(--bg)"><div class="w"><p class="eye">05 · We Manifest™</p><p class="stmt">We Manifest™</p><p class="lede" style="margin:0">Strategic planning, effective execution and dedicated effort, applied to turn an ambitious vision into a venture that works.</p></div></section>
+
+<section class="sec alt" id="principle"><div class="w"><p class="eye">06 · E-Principle</p><h2>How possibility becomes progress.</h2><p class="lede">One sequence for every engagement. Each stage connects more of the honeycomb: possibilities become a network.</p>
+<div class="tl" role="tablist" aria-label="E-Principle stages" id="tl"></div><div class="pn" role="tabpanel" id="pn" aria-live="polite"></div></div></section>
+
+<section class="sec" id="proof" style="background:var(--bg)"><div class="w"><p class="eye">07 · Proof</p><h2>Progress you can inspect.</h2><p class="lede">Systems, methods and outcomes, shown as they are.</p>
+<div class="tools"><div><b>E-Principle interactive</b><span>The stepper above, as a working tool.</span></div><div><b>EXCELLERS CRM PRO</b><span>A 14-sheet workbook with live KPI dashboards.</span></div><div><b>Careers system</b><span>A talent registration flow, designed end to end.</span></div></div>
+<div class="emp"><h3>Case studies are coming</h3><p>Client work appears here once each client has approved it. Until then, ask for a walkthrough of our own tools.</p><a class="btn s" href="#contact">Ask for a walkthrough</a></div></div></section>
+
+<section class="sec alt" id="who"><div class="w"><p class="eye">08 · Who we work with</p><h2>For people building what's next.</h2><p class="lede">Turn friction into progress, whatever your role.</p>
+<div class="aud"><div><b>Founders</b><span>Turn a vision into a venture.</span></div><div><b>Leaders</b><span>Turn strategy into delivery.</span></div><div><b>Operations teams</b><span>Turn friction into flow.</span></div><div><b>Growth teams</b><span>Turn attention into traction.</span></div><div><b>Transformation teams</b><span>Turn programmes into lasting change.</span></div></div></div></section>
+
+<section class="sec" id="engagements" style="background:var(--bg)"><div class="w"><p class="eye">09 · Engagements</p><h2>Start where the need is.</h2><p class="lede">Scoped around the work. We agree scope first, then commercial terms.</p>
+<div class="eg"><div><p class="eye">For a decision</p><h3>Advisory</h3><ul><li>A scoped question and a clear deliverable</li><li>Working sessions with a named lead</li></ul><a class="btn s" href="#contact">Discuss scope <span class="ar" aria-hidden="true">→</span></a></div>
+<div><p class="eye">For ongoing progress</p><h3>Partnership</h3><ul><li>A regular working cadence</li><li>A roadmap reviewed as conditions change</li></ul><a class="btn s" href="#contact">Discuss scope <span class="ar" aria-hidden="true">→</span></a></div>
+<div><p class="eye">For meaningful change</p><h3>Transformation Program</h3><ul><li>Delivery across all five stages</li><li>Handover and capability transfer in the plan</li></ul><a class="btn s" href="#contact">Discuss scope <span class="ar" aria-hidden="true">→</span></a></div></div>
+<p class="inall"><b>In every engagement:</b> a named lead · a written roadmap · clear scope and terms · confidentiality · capability transfer where required.</p></div></section>
+
+<section class="sec alt" id="insights"><div class="w"><p class="eye">10 · Insights</p><h2>EXCELLERS Insights</h2><p class="lede">Thinking on operations, people, technology and AI.</p>
+<div class="emp"><h3>First insights are coming</h3><p>Articles appear here once published, filterable by capability and E-Principle stage.</p><a class="btn s" href="#contact">Explore insights <span class="ar" aria-hidden="true">→</span></a></div></div></section>
+
+<section class="sec" id="faq" style="background:var(--bg)"><div class="w"><p class="eye">11 · FAQ</p><h2>Questions before the first conversation</h2><div style="max-width:720px;margin-top:32px">
+<details open><summary>Do you publish fixed prices?</summary><p>No. Engagements are scoped around the work, so we agree scope first and discuss commercial terms once it is clear.</p></details>
+<details><summary>How do you handle confidentiality?</summary><p>Confidentiality is a baseline. An agreement is signed before any material is reviewed.</p></details>
+<details><summary>Where does an engagement start?</summary><p>With a conversation about the outcome you need. From that we propose a scope.</p></details>
+<details><summary>Do you work in specific industries?</summary><p>The eight capabilities apply across sectors. Industry Solutions adapts them to a particular sector.</p></details></div></div></section>
+
+<div class="ml"></div>
+<section class="sec" id="contact" style="background:var(--w);border-bottom:0"><div class="w"><p class="eye">12 · Next step</p><h2>Every possibility starts with a decision.</h2><p class="lede">Tell us what you are trying to change and we will come back with a proposed scope.</p>
+<form id="f" novalidate><label for="em">Work email</label><div class="row" style="align-items:flex-start"><div style="flex:1;min-width:240px;max-width:360px"><input id="em" class="in" type="email" placeholder="name@company.com" autocomplete="email"><p class="msg" id="mg">We reply within two working days.</p></div><button class="btn p" type="submit">Start a conversation <span class="ar" aria-hidden="true">→</span></button></div></form></div></section>
+</main>
+<footer><div class="w"><span>Business transformation for organizations ready to move from possibility to progress.</span><span>Explore. Enlighten. Execute. Empower. Evolve. © 2026 EXCELLERS · We Manifest™</span></div></footer>
+<script>
+const $=s=>document.querySelector(s);
+const hx=(x,y,R)=>[0,1,2,3,4,5].map(i=>[x+R*Math.cos(Math.PI/3*i),y+R*Math.sin(Math.PI/3*i)]);
+(()=>{const R=28,g=.2;let t='';for(let c=-1;c<14;c++)for(let r=-1;r<11;r++){const v=hx(c*1.5*R,r*1.732*R+(c%2?.866*R:0),R);for(let k=0;k<6;k++){const a=v[k],b=v[(k+1)%6];t+=`<line x1="${a[0]+(b[0]-a[0])*g}" y1="${a[1]+(b[1]-a[1])*g}" x2="${b[0]-(b[0]-a[0])*g}" y2="${b[1]-(b[1]-a[1])*g}"/>`}}$('#mesh').innerHTML=t})();
+const N=[['Business & Strategy','Direction, portfolio and operating-model choices.','<path d="M4 14H10M10 14L13 8.8M10 14L13 19.2"/>',[[4,14],[13,19.2]],[13,8.8]],['Customer Experience','Journeys, service design and the moments that shape loyalty.','<path d="M4 8C4 14 8 17 12 17S20 14 20 8"/>',[[4,8],[20,8]],[12,17]],['Operations','Process, performance and the mechanics of delivery.','<circle cx="12" cy="12" r="7"/>',[[12,5],[5.94,15.5]],[18.06,15.5]],['People','Organisation, capability and leadership through change.','<path d="M5 18a7 7 0 0 1 14 0M12 11V6"/>',[[5,18],[19,18]],[12,6]],['Technology','Architecture, platforms and delivery engineering.','<rect x="3" y="6" width="18" height="12" rx="6"/><path d="M9 12h6"/>',[[9,12]],[15,12]],['Digital Growth','Acquisition, conversion and measurable growth online.','<path d="M4 19L7 13.8H11L14 8.6H18"/>',[[4,19]],[18,8.6]],['Industry Solutions','Capabilities adapted to the realities of a sector.','<path d="M7 19H17M7 19V10M12 19V6M17 19V12"/>',[[7,10],[17,12]],[12,6]],['AI & Automation','Applied intelligence where it removes real work.','<path d="M12 12V5M12 12L5.94 15.5M12 12L18.06 15.5"/>',[[12,5],[5.94,15.5],[18.06,15.5]],[12,12]]];
+const ico=(n,sz)=>{const[,,p,d,c]=n;return`<svg class="ic" width="${sz}" height="${sz}" viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${p}</g>${d.map(q=>`<circle cx="${q[0]}" cy="${q[1]}" r="2.4" fill="currentColor"/>`).join('')}<circle class="cd" cx="${c[0]}" cy="${c[1]}" r="2.4"/></svg>`};
+const pts=N.map((_,i)=>{const a=-Math.PI/2+i*Math.PI/4;return[200+140*Math.cos(a),200+140*Math.sin(a)]});
+let sv='';for(let i=0;i<8;i++){sv+=`<line data-a="h" data-b="${i}" x1="200" y1="200" x2="${pts[i][0]}" y2="${pts[i][1]}"/>`;const j=(i+1)%8;sv+=`<line data-a="${i}" data-b="${j}" x1="${pts[i][0]}" y1="${pts[i][1]}" x2="${pts[j][0]}" y2="${pts[j][1]}"/>`}
+for(let i=0;i<8;i++)for(let j=i+2;j<8;j++)if(!(i==0&&j==7))sv+=`<line data-a="${i}" data-b="${j}" x1="${pts[i][0]}" y1="${pts[i][1]}" x2="${pts[j][0]}" y2="${pts[j][1]}" style="opacity:.45"/>`;
+sv+=`<circle cx="200" cy="200" r="34" fill="var(--w)" stroke="var(--br)" stroke-width="2"/><circle cx="200" cy="188" r="4" fill="var(--sg)"/><text x="200" y="210">One method</text><text x="200" y="222" style="font-weight:400">five stages</text>`;
+N.forEach((n,i)=>{sv+=`<g class="nd" data-i="${i}" transform="translate(${pts[i][0]} ${pts[i][1]})"><circle class="o" r="32"/><g transform="translate(-15 -15) scale(1.25)">${ico(n,24).replace(/<\/?svg[^>]*>/g,'')}</g></g>`});
+$('#sy').innerHTML=sv;
+$('#lst').innerHTML=N.map((n,i)=>`<button class="li" type="button" data-i="${i}" aria-pressed="false">${ico(n,32)}${n[0]}</button>`).join('');
+function pick(i){document.querySelectorAll('.li').forEach((b,j)=>b.setAttribute('aria-pressed',j===i));document.querySelectorAll('#sy .nd').forEach((g,j)=>g.classList.toggle('on',j===i));document.querySelectorAll('#sy line').forEach(l=>{const a=l.dataset.a,b=l.dataset.b;l.classList.toggle('on',a==i||b==i||(b==i))});$('#sd').innerHTML=`<b>${N[i][0]}.</b> ${N[i][1]} It works with the seven other capabilities through the same five-stage method, so progress in one lifts the rest.`}
+document.querySelectorAll('.li').forEach(b=>{const i=+b.dataset.i;b.onclick=()=>pick(i);b.onmouseenter=()=>pick(i)});document.querySelectorAll('#sy .nd').forEach(g=>g.onclick=()=>pick(+g.dataset.i));pick(0);
+const P=13,pos=k=>k?[32+P*Math.cos(Math.PI/3*(k-1)),32+P*Math.sin(Math.PI/3*(k-1))]:[32,32];
+const ST=[{d:[0],n:[0],l:[]},{d:[0,1],n:[1],l:[[0,1]]},{d:[0,1,4],n:[4],l:[[0,1],[0,4]]},{d:[0,1,4,2,5],n:[2,5],l:[[0,1],[0,4],[0,2],[0,5]]},{d:[0,1,2,3,4,5,6],n:[3,6],l:[[0,1],[0,2],[0,3],[0,4],[0,5],[0,6],[1,2],[2,3],[3,4],[4,5],[5,6],[6,1]]}];
+function glyph(i){const s=ST[i];let o='';for(let k=0;k<7;k++){const[x,y]=pos(k);if(!s.d.includes(k))o+=`<circle cx="${x}" cy="${y}" r="2.6" fill="none" stroke="var(--s4)" stroke-width="1.3"/>`}s.l.forEach(([a,b])=>{const A=pos(a),B=pos(b);o+=`<line x1="${A[0]}" y1="${A[1]}" x2="${B[0]}" y2="${B[1]}" stroke="var(--br)" stroke-width="3.4" stroke-linecap="round"/>`});s.d.forEach(k=>{const[x,y]=pos(k);o+=`<circle cx="${x}" cy="${y}" r="5.2" fill="${s.n.includes(k)?'#00B4D9':'var(--br)'}"/>`});return`<svg viewBox="0 0 64 64" aria-hidden="true">${o}</svg>`}
+const E=[['Explore','What is possible?','Curiosity drives innovation. We venture into uncharted territory and discover new possibilities.','Signal Sweep · Scanning'],['Enlighten','What matters?','We illuminate complex challenges, guiding informed decisions for meaningful progress.','Evidence · Analysing'],['Execute','What needs to happen?','We turn ideas into reality with precision and determination.','Delivery Graph · Executing'],['Empower','Who carries it forward?','We cultivate success through support, encouragement and trust.','Autonomy Index · Handover'],['Evolve','What comes next?','We embrace change for continuous growth, staying ahead through constant innovation.','Growth Curve · Compounding']];
+let cur=0;const tl=$('#tl'),pn=$('#pn');
+tl.innerHTML=E.map((e,i)=>`<button class="tb" role="tab" id="t${i}" aria-controls="pn" type="button">${glyph(i)}${e[0]}</button>`).join('');
+function go(i,f){cur=i;[...tl.children].forEach((b,j)=>{b.setAttribute('aria-selected',j===i);b.tabIndex=j===i?0:-1;b.classList.toggle('dn',j<i)});pn.setAttribute('aria-labelledby','t'+i);pn.innerHTML=`${glyph(i)}<div><p class="eye">Stage ${i+1} of 5 · ${E[i][0]}</p><p class="q">${E[i][1]}</p><p style="color:var(--mut)">${E[i][2]}</p><p class="k">${E[i][3]}</p></div>`;if(f)tl.children[i].focus()}
+[...tl.children].forEach((b,i)=>b.onclick=()=>go(i));
+tl.onkeydown=e=>{const k={ArrowRight:1,ArrowDown:1,ArrowLeft:-1,ArrowUp:-1}[e.key];if(k){e.preventDefault();go((cur+k+5)%5,1)}else if(e.key==='Home'){e.preventDefault();go(0,1)}else if(e.key==='End'){e.preventDefault();go(4,1)}};go(0);
+const nls=[...document.querySelectorAll('nav .nl')],secs=nls.map(a=>document.querySelector(a.getAttribute('href')));
+addEventListener('scroll',()=>{let k=-1;secs.forEach((s,i)=>{if(s.getBoundingClientRect().top<120)k=i});nls.forEach((a,i)=>i===k?a.setAttribute('aria-current','true'):a.removeAttribute('aria-current'))},{passive:true});
+$('#f').onsubmit=e=>{e.preventDefault();const i=$('#em'),m=$('#mg'),ok=/^\S+@\S+\.\S+$/.test(i.value);i.classList.toggle('bad',!ok);i.setAttribute('aria-invalid',!ok);m.className='msg'+(ok?'':' er');if(!ok){m.setAttribute('role','alert');m.textContent='⚠ Enter a full address, such as name@company.com.'}else{m.removeAttribute('role');m.textContent='Thank you. Prototype only: nothing was sent.'}};
+</script></body></html>

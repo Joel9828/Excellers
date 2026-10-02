@@ -4,6 +4,11 @@ import BrandBackdrop from "@/components/BrandBackdrop";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Capabilities from "@/components/Capabilities";
+import Tension from "@/components/Tension";
+import WhatWeDo from "@/components/WhatWeDo";
+import Proof from "@/components/Proof";
+import Audiences from "@/components/Audiences";
+import Insights from "@/components/Insights";
 import Manifesto from "@/components/Manifesto";
 import Method from "@/components/Method";
 import Engagements from "@/components/Engagements";
@@ -44,14 +49,19 @@ export default function Home() {
         </div>
 
         <Hero />
+        <Tension />
+        <WhatWeDo />
         <Capabilities />
         <Manifesto />
 
-        {/* the E-Principle and Engagements each carry their own torn top edge,
-            so the hand-offs into and out of the Marian block cost no scroll */}
+        {/* the E-Principle carries a torn top edge into the Marian block and
+            Proof carries the one that hands the page back to white */}
         <Method />
-        <Engagements />
+        <Proof />
 
+        <Audiences />
+        <Engagements />
+        <Insights />
         <Faq />
         <ArcMarquee />
         <Footer />

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>EXCELLERS Icon Showcase</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff;--fg:#1a1d24;--mut:#54595F;--line:#D3D9E5;--card:#F4F6FA;--p:#013E8A;--hv:#0076B5;--nd:#00B4D9;--lat:#B9CCE0;--sl:#54595F;--hd:'Constantia','Georgia',serif;--bd:'Inter',system-ui,sans-serif;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b1220;--fg:#e8ecf4;--mut:#a9b3c6;--line:#22304a;--card:#111b2e;--p:#fff;--hv:#7FD7FF;--lat:#2f4566;--sl:#a9b3c6}}
+:root[data-theme="dark"]{--bg:#0b1220;--fg:#e8ecf4;--mut:#a9b3c6;--line:#22304a;--card:#111b2e;--p:#fff;--hv:#7FD7FF;--lat:#2f4566;--sl:#a9b3c6}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.5 var(--bd)}
+.w{max-width:980px;margin:0 auto;padding:0 20px}
+header{background:#013E8A;color:#fff;padding:52px 0 36px;position:relative;overflow:hidden}
+header h1{font:700 clamp(30px,5vw,46px)/1.1 var(--hd);margin:0 0 6px;position:relative}header p{margin:0;color:#cfe6f5;position:relative;max-width:520px}
+header svg.pat{position:absolute;right:-10px;top:0;opacity:.55}
+#th{position:absolute;top:calc(12px + env(safe-area-inset-top,0px));right:16px;background:transparent;border:1px solid #7FD7FF;color:#fff;border-radius:20px;padding:6px 14px;font:600 13px var(--bd);cursor:pointer;z-index:2}
+section{padding:44px 0;border-bottom:1px solid var(--line)}
+.eye{font:600 12px var(--bd);letter-spacing:.14em;color:var(--hv);text-transform:uppercase}
+h2{font:700 28px/1.2 var(--hd);color:var(--p);margin:4px 0 6px}.mut{color:var(--mut);margin:0 0 18px;max-width:640px}
+.g{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(118px,1fr))}
+.c{border:1px solid var(--line);border-radius:10px;padding:18px 8px 12px;text-align:center;font-size:12px;color:var(--mut);background:var(--bg)}
+.c svg{display:block;margin:0 auto 10px}
+.row{display:flex;flex-wrap:wrap;gap:16px;align-items:flex-end}
+svg.i .ic{fill:none;stroke:var(--st);stroke-width:var(--sw,2);stroke-linecap:round;stroke-linejoin:round}
+svg.i .dt{fill:var(--st)}svg.i .cd{fill:var(--nc)}svg.i .rg{fill:none;stroke:var(--nd);stroke-width:1.1}
+.def{--st:var(--p);--nc:var(--nd)}.hov{--st:var(--hv);--nc:var(--nd)}.act{--st:var(--p);--nc:var(--nd)}
+.ina{--st:var(--sl);--nc:var(--sl)}.off{--st:var(--sl);--nc:var(--sl);opacity:.4}
+.mono{--st:#111;--nc:#111}.wht{--st:#fff;--nc:#fff}.wn{--st:#fff;--nc:#00B4D9}
+.mx{display:grid;grid-template-columns:76px repeat(5,1fr);gap:10px;align-items:center;font-size:12px;color:var(--mut);text-align:center;overflow-x:auto}
+.mx svg{margin:auto}
+.ctx{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(270px,1fr))}
+.box{border:1px solid var(--line);border-radius:12px;padding:16px;background:var(--card)}.box h4{margin:0 0 12px;font-size:13px;color:var(--mut)}
+.nav{display:flex;justify-content:space-around;background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:10px 4px;font-size:11px;color:var(--mut)}
+.nav div{display:flex;flex-direction:column;align-items:center;gap:2px;width:20%}.nav .on{color:var(--p);font-weight:600}
+.btn{display:inline-flex;align-items:center;gap:8px;height:48px;padding:0 20px;border-radius:8px;font:700 13px var(--bd);letter-spacing:.06em;text-transform:uppercase;margin:0 8px 8px 0}
+.b1{background:#013E8A;color:#fff}.b2{border:2px solid var(--p);color:var(--p)}
+.pk{background:#F6F4EE;color:#111;border-radius:6px;padding:14px;display:flex;gap:14px;justify-content:center;font-size:11px;text-align:center}
+.pk2{background:#013E8A;border-radius:6px;padding:14px;display:flex;gap:14px;justify-content:center;margin-top:10px}
+.app{width:72px;height:72px;border-radius:18px;background:linear-gradient(135deg,#013E8A,#0076B5);display:grid;place-items:center}
+.band{position:relative;overflow:hidden;background:#013E8A;border-radius:12px;padding:28px;color:#fff;display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.band svg.pat{position:absolute;right:-20px;bottom:-30px;opacity:.6;pointer-events:none}
+.band div{position:relative;font-size:13px}.band b{display:block;font:700 15px var(--bd);margin:10px 0 2px}
+.bad{border:1px dashed #c00;border-radius:10px;padding:14px 6px 10px;text-align:center;font-size:11px;color:var(--mut)}.ok{border:1px solid #008000}
+.bad>svg,.bad>div{display:block;margin:0 auto 8px}
+#play{border:1px solid var(--line);background:var(--card);color:var(--p);border-radius:20px;padding:7px 16px;font:600 13px var(--bd);cursor:pointer}
+footer{padding:26px 0;color:var(--mut);font-size:13px}
+</style></head><body>
+<header><div class="w"><h1>Icon Showcase</h1><p>EXCELLERS · junctions, dots and drawn-up lines. Architecture at icon scale.</p></div><button id="th" type="button">Toggle theme</button></header>
+<main class="w">
+<section><div class="eye">01 · System</div><h2>Five devices, one hand</h2><p class="mut">Icons are drawn like architecture: a mesh of structure, a few confident lines, dots at the joints, and one Cyan dot where the idea manifests.</p><div class="row" id="alpha"></div></section>
+<section><div class="eye">02 · Library</div><h2>Brand icons</h2><p class="mut">Twelve icons on one grid. Note the empty space: it is part of the drawing.</p><div class="g" id="lib"></div></section>
+<section><div class="eye">03 · Draw-up</div><h2>From mesh to mark</h2><p class="mut">Every icon is developed like an architectural elevation: lattice, hairline skeleton, final form, then the signature dots.</p><div id="du"></div></section>
+<section><div class="eye">04 · Construction</div><h2>Lattice &amp; breathing room</h2><p class="mut">Strokes follow the hex-mesh angles (0°, 60°, 90°, 120°). Dashed halos mark the 3px clearance around every dot.</p><div class="row" id="grid"></div></section>
+<section><div class="eye">05 · E-Principle cluster</div><h2>Five stages, one honeycomb</h2><p class="mut">Seven honeycomb positions. Hollow ghosts are possibilities; each stage connects more of them. Dots added in the stage are Cyan.</p><div class="row" id="gl"></div><p style="margin-top:16px"><button id="play" type="button">▶ Play manifest sequence</button></p><div class="row" style="margin-top:10px"><div class="c" style="min-width:150px" id="seq"></div></div></section>
+<section><div class="eye">06 · Mesh &amp; density</div><h2>Patterns from the same hand</h2><p class="mut">The open-joint hex mesh, the density gradient and the dot rhythm are background and progress devices. They never replace an icon.</p><div class="row" id="rh"></div></section>
+<section><div class="eye">07 · UI set</div><h2>UI icons</h2><p class="mut">Same grid and stroke. No Cyan dot.</p><div class="g" id="ui"></div></section>
+<section><div class="eye">08 · States</div><h2>Colour states</h2><p class="mut">Active adds a thin Cyan ring to the manifest dot. Toggle the theme for dark mode.</p><div class="mx" id="states"></div></section>
+<section><div class="eye">09 · Sizes</div><h2>Size ladder</h2><p class="mut">Stroke 1.5 / 2 / 2.5 / 3 with the dot at 1.2× stroke radius.</p><div class="row" id="sizes"></div></section>
+<section><div class="eye">10 · Contexts</div><h2>In use</h2><div class="ctx" id="ctx"></div></section>
+<section><div class="eye">11 · Do &amp; don't</div><h2>Correct and incorrect</h2><div class="g" id="dd"></div></section>
+</main><footer><div class="w">Icons follow the EXCELLERS Icon Guidelines v4.0.</div></footer>
+<script>
+const $=id=>document.getElementById(id);
+const W=(x,y,st)=>{let p=[[x,y]];st.forEach(([a,l])=>{const q=p[p.length-1];p.push([+(q[0]+l*Math.cos(a*Math.PI/180)).toFixed(2),+(q[1]-l*Math.sin(a*Math.PI/180)).toFixed(2)])});return p};
+const L=p=>'<path d="M'+p.map(q=>q.join(' ')).join('L')+'"/>';const M=(pl,d,c)=>[pl.map(L).join(''),d,c];
+const I={
+strategy:(()=>{const a=W(4,14,[[0,6]]),b=W(10,14,[[60,6]]),c=W(10,14,[[-60,6]]);return M([a,b,c],[a[0],c[1]],[b[1]])})(),
+experience:['<path d="M4 8C4 14 8 17 12 17S20 14 20 8"/>',[[4,8],[20,8]],[[12,17]]],
+operations:['<circle cx="12" cy="12" r="7"/>',[[12,5],[5.94,15.5]],[[18.06,15.5]]],
+people:['<path d="M5 18a7 7 0 0 1 14 0M12 11V6"/>',[[5,18],[19,18]],[[12,6]]],
+technology:['<rect x="3" y="6" width="18" height="12" rx="6"/><path d="M9 12h6"/>',[[9,12]],[[15,12]]],
+growth:(()=>{const a=W(4,19,[[60,6],[0,4],[60,6],[0,4]]);return M([a],[a[0]],[a[4]])})(),
+industry:(()=>{const b=W(7,19,[[0,10]]),x=W(7,19,[[90,9]]),y=W(12,19,[[90,13]]),z=W(17,19,[[90,7]]);return M([b,x,y,z],[x[1],z[1]],[y[1]])})(),
+ai:(()=>{const a=W(12,12,[[90,7]]),b=W(12,12,[[210,7]]),c=W(12,12,[[330,7]]);return M([a,b,c],[a[1],b[1],c[1]],[[12,12]])})(),
+connect:(()=>{const a=W(5.5,15,[[60,6],[0,10]]);return M([a],[a[0]],[a[2]])})(),
+insights:['<path d="M4 15a8 8 0 0 1 16 0"/>',[[4,15],[20,15]],[[12,7]]],
+engage:['<circle cx="13" cy="12" r="7"/>',[[6,12]],[[13,12]]],
+explore:['<circle cx="12" cy="12" r="8"/>',[[12,12]],[[17.66,6.34]]],
+arrow:['<path d="M6 12H19M14 7l5 5-5 5"/>',[[5,12]],[]],
+menu:['<path d="M10 6h10M10 12h10M10 18h7"/>',[[5,6],[5,12],[5,18]],[]],
+search:['<circle cx="10.5" cy="10.5" r="6"/><path d="M15 15L19 19"/>',[[19,19]],[]],
+check:['<path d="M5 12l5 5L19 8"/>',[[5,12],[19,8]],[]],
+link:['<path d="M6 12H18"/>',[[6,12],[18,12]],[]],
+more:['',[[5,12],[12,12],[19,12]],[]]};
+function ic(n,o={}){const s=o.s||24,c=o.c||'def',sw=o.sw||2,[p,d,cy]=I[n],r=sw*1.2,big=c==='hov'||c==='act',cr=r*(big?1.2:1);
+return `<svg class="i ${c}" width="${s}" height="${s}" viewBox="0 0 24 24" style="--sw:${sw};${o.st||''}" role="img" aria-label="${n}"><g class="ic">${p}</g>${d.map(q=>`<circle class="dt" cx="${q[0]}" cy="${q[1]}" r="${r}"/>`).join('')}${cy.map(q=>(c==='act'?`<circle class="rg" cx="${q[0]}" cy="${q[1]}" r="${cr+2.2}"/>`:'')+`<circle class="cd" cx="${q[0]}" cy="${q[1]}" r="${cr}"/>`).join('')}</svg>`}
+const brand=['strategy','experience','operations','people','technology','growth','industry','ai','connect','insights','engage','explore'];
+function mesh(w_,h_,R,col,sw,o={}){const g=o.gap??.2;let t='';const rnd=(a,b)=>{const v=Math.sin(a*12.9898+b*78.233+(o.seed||1))*43758.5453;return v-Math.floor(v)};
+for(let c=-1;c<w_/(1.5*R)+2;c++)for(let r=-1;r<h_/(1.732*R)+2;r++){const cx=c*1.5*R,cy=r*1.732*R+(c%2?.866*R:0);const v=[0,1,2,3,4,5].map(k=>[cx+R*Math.cos(Math.PI/3*k),cy+R*Math.sin(Math.PI/3*k)]);
+for(let k=0;k<6;k++){const a=v[k],b=v[(k+1)%6];t+=`<line x1="${(a[0]+(b[0]-a[0])*g).toFixed(2)}" y1="${(a[1]+(b[1]-a[1])*g).toFixed(2)}" x2="${(b[0]-(b[0]-a[0])*g).toFixed(2)}" y2="${(b[1]-(b[1]-a[1])*g).toFixed(2)}"/>`}
+if(o.dots&&rnd(c,r)<.14){const q=v[Math.floor(rnd(r,c)*6)];t+=`<circle cx="${q[0].toFixed(2)}" cy="${q[1].toFixed(2)}" r="${sw*1.8}" stroke="none" fill="${rnd(c,r)<.04?'#00B4D9':col}"/>`}}
+return `<g stroke="${col}" stroke-width="${sw}" stroke-linecap="round">${t}</g>`}
+function density(n,s_){let o='';for(let r=0;r<n;r++)for(let c=0;c<n;c++){const t=Math.pow((r+(n-1-c))/(2*(n-1)),1.3),w=.5+t*s_*.62,x=c*s_+s_/2,y=r*s_+s_/2,d=s_*.4;o+=`<line x1="${x-d}" y1="${y+d}" x2="${x+d}" y2="${y-d}" stroke="var(--p)" stroke-width="${w.toFixed(2)}"/>`}return o}
+const dotc=(q,k)=>`<circle class="${k}" cx="${q[0]}" cy="${q[1]}" r="2.4"/>`;
+function du(n,st,s_){const [p,d,cy]=I[n];let o='';
+if(st>=1)o+=mesh(24,24,4,'var(--lat)',.1,{gap:0})+'<rect x="4" y="4" width="16" height="16" fill="none" stroke="#00B4D9" stroke-width=".1" stroke-dasharray=".5 .4"/>';
+if(st==2)o+=`<g fill="none" stroke="var(--hv)" stroke-width=".3" stroke-linecap="round">${p}</g>`+[...d,...cy].map(q=>`<circle cx="${q[0]}" cy="${q[1]}" r="2.4" fill="none" stroke="var(--hv)" stroke-width=".2" stroke-dasharray=".4 .3"/>`).join('');
+if(st>=3)o+=`<g class="ic">${p}</g>`;
+if(st>=4)o+=d.map(q=>dotc(q,'dt')).join('')+cy.map(q=>dotc(q,'cd')).join('');
+return `<svg class="i def" width="${s_}" height="${s_}" viewBox="0 0 24 24" style="--sw:2;border:1px solid var(--line);border-radius:8px;background:var(--bg)">${o}</svg>`}
+$('alpha').innerHTML=[
+['Junction',`<svg class="i def" width="72" height="72" viewBox="0 0 24 24" style="--sw:2"><g class="ic"><path d="M12 12V5M12 12L5.94 15.5M12 12L18.06 15.5"/></g>${dotc([12,5],'dt')}${dotc([5.94,15.5],'dt')}${dotc([18.06,15.5],'cd')}</svg>`,'Three strokes, 120° apart'],
+['Dot',`<svg class="i def" width="72" height="72" viewBox="0 0 24 24">${dotc([8,12],'dt')}${dotc([16,12],'cd')}</svg>`,'One Cyan point of outcome'],
+['Draw-up',`<svg width="72" height="72" viewBox="0 0 24 24"><g fill="none" stroke="var(--p)" stroke-linecap="round"><path d="M3 19Q12 1 21 19" stroke-width=".4"/><path d="M3 19Q12 6 21 19" stroke-width="1"/><path d="M3 19Q12 11 21 19" stroke-width="2"/></g></svg>`,'Hairline, contour, structure'],
+['Density',`<svg width="72" height="72" viewBox="0 0 60 60">${density(6,10)}</svg>`,'Lines thicken into blocks'],
+['Mesh',`<svg width="72" height="72" viewBox="0 0 24 24">${mesh(24,24,5,'var(--p)',.9,{gap:.22})}</svg>`,'Hex cells, open joints']
+].map(([t,sv,d])=>`<div class="c" style="min-width:150px">${sv}<b style="color:var(--fg)">${t}</b><br>${d}</div>`).join('');
+$('du').innerHTML=['strategy','growth','industry'].map(n=>`<div class="row" style="margin-bottom:16px">${[1,2,3,4].map(st=>`<div class="c" style="min-width:130px">${du(n,st,110)}${st} · ${['Lattice','Skeleton','Form','Signature'][st-1]}</div>`).join('')}</div>`).join('');
+$('lib').innerHTML=brand.map(n=>`<div class="c">${ic(n,{s:56})}${n}</div>`).join('');
+$('ui').innerHTML=['arrow','menu','search','check','link','more'].map(n=>`<div class="c">${ic(n,{s:32})}${n}</div>`).join('');
+const fan=[0,60,90,120].map(a=>W(12,12,[[a,8]])[1]);
+$('grid').innerHTML=`<svg width="264" height="264" viewBox="0 0 24 24" class="i def" style="--sw:2;border:1px solid var(--line);border-radius:8px;background:var(--card)">${mesh(24,24,4,'var(--lat)',.1,{gap:0})}<rect x="4" y="4" width="16" height="16" fill="none" stroke="#00B4D9" stroke-width=".1" stroke-dasharray=".5 .4"/>${[...I.strategy[1],...I.strategy[2]].map(q=>`<circle cx="${q[0]}" cy="${q[1]}" r="5.4" fill="none" stroke="#00B4D9" stroke-width=".12" stroke-dasharray=".5 .4"/>`).join('')}<g class="ic">${I.strategy[0]}</g>${I.strategy[1].map(q=>dotc(q,'dt')).join('')}${dotc(I.strategy[2][0],'cd')}</svg><svg width="150" height="150" viewBox="0 0 24 24" class="i def" style="--sw:1.2;border:1px solid var(--line);border-radius:8px"><g class="ic">${fan.map(q=>`<path d="M12 12L${q[0]} ${q[1]}"/>`).join('')}</g>${dotc([12,12],'cd')}</svg><ul style="margin:0;padding-left:18px;color:var(--mut);line-height:1.9"><li>24×24 master, 16×16 core, 20×20 live area</li><li>Hex lattice radius 4px (flat-top)</li><li>Strokes at 0°, 60°, 90°, 120° (plus arcs)</li><li>Stroke 2px, dot radius 2.4px</li><li>3px clearance around every dot</li><li>Every line ends on a dot or a junction</li><li>One Cyan manifest dot</li></ul>`;
+const P=13,pos=k=>k?[32+P*Math.cos(Math.PI/3*(k-1)),32+P*Math.sin(Math.PI/3*(k-1))]:[32,32];
+const ST=[{d:[0],n:[0],l:[]},{d:[0,1],n:[1],l:[[0,1]]},{d:[0,1,4],n:[4],l:[[0,1],[0,4]]},{d:[0,1,4,2,5],n:[2,5],l:[[0,1],[0,4],[0,2],[0,5]]},{d:[0,1,2,3,4,5,6],n:[3,6],l:[[0,1],[0,2],[0,3],[0,4],[0,5],[0,6],[1,2],[2,3],[3,4],[4,5],[5,6],[6,1]]}];
+function glyph(i,s){const t=ST[i];let o='';for(let k=0;k<7;k++){const [x,y]=pos(k);if(!t.d.includes(k))o+=`<circle cx="${x}" cy="${y}" r="2.6" fill="none" stroke="var(--lat)" stroke-width="1.3"/>`}
+t.l.forEach(([a,b])=>{const A=pos(a),B=pos(b);o+=`<line x1="${A[0]}" y1="${A[1]}" x2="${B[0]}" y2="${B[1]}" stroke="var(--p)" stroke-width="3.4" stroke-linecap="round"/>`});
+t.d.forEach(k=>{const [x,y]=pos(k);o+=`<circle cx="${x}" cy="${y}" r="5.2" fill="${t.n.includes(k)?'#00B4D9':'var(--p)'}"/>`});return `<svg width="${s}" height="${s}" viewBox="0 0 64 64">${o}</svg>`}
+const EN=['Explore','Enlighten','Execute','Empower','Evolve'];
+$('gl').innerHTML=EN.map((t,i)=>`<div class="c" style="min-width:118px">${glyph(i,84)}0${i+1} ${t}</div>`).join('');
+let cur=0,tm=null;$('seq').innerHTML=glyph(0,120)+'<br>01 Explore';
+$('play').onclick=()=>{clearInterval(tm);cur=0;const f=()=>{$('seq').innerHTML=glyph(cur,120)+`<br>0${cur+1} ${EN[cur]}`;cur++;if(cur>4){clearInterval(tm)}};f();tm=setInterval(f,1100)};
+function dna(w,h,n){let o='';for(let i=0;i<n;i++){const y=14+i*(h-28)/(n-1),t=Math.sin(Math.PI*(i+.5)/n),mid=i>=2&&i<=n-3;
+if(mid){const L=w*.36*t,a=-.35,x1=w/2-L,y1=y-a*L*-1,x2=w/2+L,y2=y+a*L*-1;const r1=3+t*5,r2=3+t*4;o+=`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="var(--p)" stroke-width="${2+t}" stroke-linecap="round"/><circle cx="${x1}" cy="${y1}" r="${r1}" fill="var(--p)"/><circle cx="${x2}" cy="${y2}" r="${r2}" fill="${i==Math.floor(n/2)?'#00B4D9':'var(--p)'}"/>`}
+else o+=`<circle cx="${w/2+(i<2?-1:1)*t*8}" cy="${y}" r="${3+t*4}" fill="var(--p)"/>`}
+return `<svg width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">${o}</svg>`}
+function strip(){let o='';const n=15;for(let i=0;i<n;i++){const x=12+i*(296/(n-1)),t=Math.sin(Math.PI*(i+.5)/n),mid=i>=4&&i<=n-5;
+o+=mid&&i%2==0?`<line x1="${x}" y1="${34-t*8}" x2="${x+296/(n-1)*2}" y2="${34+t*8}" stroke="var(--p)" stroke-width="2.4" stroke-linecap="round"/>`:'';o+=`<circle cx="${x}" cy="${mid&&i%2==0?34-t*8:mid?34+t*8*(i%2?-1:1)*0+34-34+ (34+t*8) -34+34-34:34}" r="${2+t*5}" fill="${i==7?'#00B4D9':'var(--p)'}"/>`}
+return `<svg width="320" height="68" viewBox="0 0 320 68">${o}</svg>`}
+$('rh').innerHTML=`<div class="c"><svg width="300" height="220" viewBox="0 0 300 220">${mesh(300,220,26,'var(--p)',2.4,{gap:.2,dots:true,seed:4})}</svg>open-joint mesh</div><div class="c"><svg width="220" height="220" viewBox="0 0 110 110">${density(10,11)}</svg>density gradient</div><div class="c">${dna(100,220,11)}dot rhythm</div>`;
+$('states').innerHTML='<span></span>'+[['Default','def'],['Hover','hov'],['Active','act'],['Inactive','ina'],['Disabled','off']].map(x=>`<b>${x[0]}</b>`).join('')+['growth','people','insights'].map(n=>`<span style="text-align:left">${n}</span>`+['def','hov','act','ina','off'].map(c=>ic(n,{s:52,c})).join('')).join('');
+$('sizes').innerHTML=[[16,1.5],[24,2],[32,2.5],[48,3]].map(([s,w])=>`<div class="c" style="min-width:90px">${ic('growth',{s,sw:w})}${s}px · ${w}px</div>`).join('');
+function pat(W,H,p,col,seed){let o='';const pts={};const rnd=(a,b)=>{const v=Math.sin(a*12.9898+b*78.233+seed)*43758.5453;return v-Math.floor(v)};const rows=Math.ceil(H/(p*.866))+1,cols=Math.ceil(W/p)+1;
+for(let j=0;j<rows;j++)for(let i=0;i<cols;i++){const x=i*p+(j%2?p/2:0),y=j*p*.866;pts[i+','+j]=[x,y,rnd(i,j)<.38]}
+for(let j=0;j<rows;j++)for(let i=0;i<cols;i++){const [x,y,on]=pts[i+','+j];if(!on){o+=`<circle cx="${x}" cy="${y}" r="1.6" fill="none" stroke="${col}" stroke-width=".9"/>`;continue}
+[[i+1,j],[i+(j%2?1:0),j+1],[i+(j%2?0:-1),j+1]].forEach(k=>{const q=pts[k[0]+','+k[1]];if(q&&q[2]&&rnd(i+k[0],j+k[1])<.7)o+=`<line x1="${x}" y1="${y}" x2="${q[0]}" y2="${q[1]}" stroke="${col}" stroke-width="3" stroke-linecap="round"/>`});o+=`<circle cx="${x}" cy="${y}" r="4.6" fill="${col}"/>`}
+return o}
+document.querySelector('header').insertAdjacentHTML('afterbegin',`<svg class="pat" width="440" height="240" viewBox="0 0 440 240">${mesh(440,240,30,'#7FD7FF',2,{gap:.2,dots:true,seed:2})}</svg>`);
+const nav=[['growth','Home',1],['strategy','Work'],['insights','Insights'],['people','Team'],['connect','Talk']];
+$('ctx').innerHTML=`<div class="box"><h4>Mobile navigation · 24px, active ring</h4><div class="nav">${nav.map(([n,l,a])=>`<div class="${a?'on':''}">${ic(n,{s:28,c:a?'act':'ina'})}${l}</div>`).join('')}</div></div>
+<div class="box"><h4>Web buttons · 20px icon, 8px gap</h4><span class="btn b1">Start a conversation ${ic('arrow',{s:20,c:'wht'})}</span><span class="btn b2">See how we manifest ${ic('arrow',{s:20})}</span><span class="btn b2">${ic('connect',{s:20})} Contact</span></div>
+<div class="box"><h4>Packaging · one colour, manifest dot in same colour</h4><div class="pk">${['operations','technology','ai'].map(n=>`<div>${ic(n,{s:48,c:'mono'})}${n}</div>`).join('')}</div><div class="pk2">${['operations','technology','ai'].map(n=>ic(n,{s:48,c:'wht'})).join('')}</div></div>
+<div class="box"><h4>App icon · white marks, Cyan dot, 3px stroke</h4><div class="row"><div class="app">${ic('strategy',{s:48,c:'wn',sw:2.6})}</div><div class="app" style="width:40px;height:40px;border-radius:10px">${ic('strategy',{s:30,c:'wn',sw:3})}</div><div class="app" style="width:24px;height:24px;border-radius:6px">${ic('connect',{s:18,c:'wht',sw:3.4})}</div></div></div>
+<div class="box" style="grid-column:1/-1"><h4>Capability band · icons on the page, dot-and-bridge cluster as texture</h4><div class="band"><svg class="pat" width="420" height="230" viewBox="0 0 420 230">${mesh(420,230,30,'rgba(127,215,255,.55)',2,{gap:.2,dots:true,seed:7})}</svg>${['strategy','technology','ai','people'].map((n,i)=>`<div>${ic(n,{s:44,c:'wn'})}<b>0${i+1} ${n}</b>One line on what it does.</div>`).join('')}</div></div>`;
+const dd=[['Correct','ok',ic('strategy',{s:48})],['Too many dots','bad',`<svg class="i def" width="48" height="48" viewBox="0 0 24 24"><g class="ic"><path d="M4 4H20V20H4zM4 12H20M12 4V20"/></g>${[[4,4],[12,4],[20,4],[4,12],[12,12],[20,12],[4,20],[12,20],[20,20]].map(q=>`<circle class="dt" cx="${q[0]}" cy="${q[1]}" r="2.4"/>`).join('')}</svg>`],['Oversized dots','bad',ic('strategy',{s:48}).replace(/r="2.4"/g,'r="4.2"')],['Loose line ends','bad',`<svg class="i def" width="48" height="48" viewBox="0 0 24 24"><g class="ic"><path d="M4 12H10L16 6H18M10 12L16 18H18"/></g><circle class="cd" cx="18" cy="6" r="2.4"/></svg>`],['Hex badge','bad',`<svg width="48" height="48" viewBox="0 0 48 48"><polygon points="24,3 42,13.5 42,34.5 24,45 6,34.5 6,13.5" fill="none" stroke="#0076B5" stroke-width="1.5"/><g transform="translate(12 12)">${ic('strategy',{s:24}).replace(/^<svg[^>]*>/,'<g>').replace('</svg>','</g>')}</g></svg>`],['Two Cyan dots','bad',ic('strategy',{s:48}).replace('</svg>','<circle cx="4" cy="12" r="2.4" fill="#00B4D9"/></svg>')],['Off-brand colour','bad',ic('strategy',{s:48,st:'--st:#FF5722;--nc:#FF5722'})],['Off-lattice angle','bad',`<svg class="i def" width="48" height="48" viewBox="0 0 24 24"><g class="ic"><path d="M4 16L15.4 9.4"/></g>${dotc([4,16],'dt')}${dotc([15.4,9.4],'cd')}</svg>`.replace('M4 16L15.4 9.4','M4 17L18 8')],['Crowded','bad',`<svg class="i def" width="48" height="48" viewBox="0 0 24 24"><g class="ic"><path d="M6 10H10M6 13H10M14 10H18M14 13H18"/></g>${[[6,10],[10,13],[14,10],[18,13],[12,16]].map(q=>`<circle class="dt" cx="${q[0]}" cy="${q[1]}" r="2.4"/>`).join('')}</svg>`]];
+$('dd').innerHTML=dd.map(([l,k,h])=>`<div class="bad ${k==='ok'?'ok':''}">${h}${k==='ok'?'✓':'✕'} ${l}</div>`).join('');
+$('th').onclick=()=>{const r=document.documentElement;const d=getComputedStyle(r).getPropertyValue('--bg').trim()==='#0b1220';r.setAttribute('data-theme',d?'light':'dark')};
+</script></body></html>
