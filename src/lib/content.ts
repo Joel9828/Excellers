@@ -230,21 +230,6 @@ export const principle = {
   ],
 };
 
-export const benefits = [
-  {
-    title: "Progress you can see",
-    body: "Each stage has a defined purpose, so your team always knows where the work stands.",
-  },
-  {
-    title: "Decisions that follow evidence",
-    body: "Enlighten comes before Execute: choices are made from findings, not the other way round.",
-  },
-  {
-    title: "Handover built in",
-    body: "Empower and Evolve keep capability with your team once the delivery work is done.",
-  },
-];
-
 /* ── proof ────────────────────────────────────────────────────── */
 /* Internal proof only. The empty state is deliberate and is the client's
    wording: no client work is claimed until a client has approved it. */
@@ -395,19 +380,30 @@ export const closing = {
   sent: "Thank you. We will be in touch within two working days.",
 };
 
+/* A null href means there is nowhere real to go yet: the footer renders it
+   as plain text marked "Coming soon" rather than a link that quietly lands
+   back on the contact form. */
 export const footer = {
   columns: [
     {
       title: "Capabilities",
-      links: capabilities.map((c) => c.name),
+      links: capabilities.map((c) => ({
+        label: c.name,
+        href: "#capabilities",
+      })),
     },
     {
       title: "Company",
-      links: ["The E-Principle", "Engagements", "Insights", "Careers"],
+      links: [
+        { label: "The E-Principle", href: "#principle" },
+        { label: "Engagements", href: "#engagements" },
+        { label: "Insights", href: "#insights" },
+        { label: "Careers", href: null },
+      ],
     },
     {
       title: "Regions",
-      links: regions,
+      links: regions.map((r) => ({ label: r, href: null })),
     },
   ],
   tagline:

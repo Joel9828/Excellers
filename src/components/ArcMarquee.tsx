@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { capabilities } from "@/lib/content";
 
 /**
@@ -15,7 +15,9 @@ export default function ArcMarquee() {
     target: ref,
     offset: ["start end", "end start"],
   });
-  const rotate = useTransform(scrollYProgress, [0, 1], [22, -22]);
+  // scroll-linked rotation is still motion the reader did not ask for
+  const still = useReducedMotion();
+  const rotate = useTransform(scrollYProgress, [0, 1], still ? [0, 0] : [22, -22]);
 
   const R = 900;
   const text = capabilities.map((c) => c.name).join("   ◆   ") + "   ◆   ";

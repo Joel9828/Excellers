@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { brand, closing, footer, regions } from "@/lib/content";
+import { brand, closing, footer } from "@/lib/content";
 import useRevealed from "@/lib/useRevealed";
 
 /**
@@ -135,19 +135,24 @@ export default function Footer() {
               <p className="eyebrow mb-4">{col.title}</p>
               <ul className="flex flex-col gap-2.5">
                 {col.links.map((l) => (
-                  <li key={l}>
-                    <a
-                      href={
-                        regions.includes(l)
-                          ? "#contact"
-                          : col.title === "Capabilities"
-                            ? "#capabilities"
-                            : "#contact"
-                      }
-                      className="text-[0.9375rem] text-slate transition hover:text-marian"
-                    >
-                      {l}
-                    </a>
+                  <li key={l.label}>
+                    {l.href ? (
+                      <a
+                        href={l.href}
+                        className="text-[0.9375rem] text-slate transition hover:text-marian"
+                      >
+                        {l.label}
+                      </a>
+                    ) : (
+                      <span className="text-[0.9375rem] text-slate/80">
+                        {l.label}
+                        {col.title === "Company" && (
+                          <em className="ml-2 not-italic text-[0.75rem] uppercase tracking-[0.1em] text-slate/60">
+                            Coming soon
+                          </em>
+                        )}
+                      </span>
+                    )}
                   </li>
                 ))}
               </ul>
