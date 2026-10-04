@@ -2,7 +2,7 @@
 
 import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
-import { hero, regions } from "@/lib/content";
+import { hero } from "@/lib/content";
 
 const Globe = dynamic(() => import("./Globe"), { ssr: false });
 
@@ -111,21 +111,6 @@ export default function Hero() {
               <span className="relative z-10">{hero.secondary}</span>
             </a>
           </motion.div>
-
-          {/* region strip */}
-          <motion.ul
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.8, duration: 0.7 }}
-            className="mt-10 flex flex-wrap gap-x-10 gap-y-3 border-t border-mist pt-7 text-[15px] text-slate"
-          >
-            {regions.map((r) => (
-              <li key={r} className="flex items-center gap-2.5">
-                <Hex />
-                {r}
-              </li>
-            ))}
-          </motion.ul>
         </div>
       </div>
 
@@ -137,20 +122,5 @@ export default function Hero() {
         <span className="manifest-line absolute inset-y-0 w-[32%]" />
       </div>
     </section>
-  );
-}
-
-/** The guide's honeycomb cell, used as a bullet. */
-function Hex() {
-  return (
-    <svg
-      width="12"
-      height="14"
-      viewBox="0 0 12 14"
-      className="flex-none text-honolulu"
-      aria-hidden="true"
-    >
-      <path d="M6 0l6 3.5v7L6 14 0 10.5v-7z" fill="currentColor" />
-    </svg>
   );
 }

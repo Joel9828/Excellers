@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     template: "%s · EXCELLERS",
   },
   description:
-    "EXCELLERS is a business transformation consultancy working across strategy, operations, people, technology and AI, from Islamabad, Maryland and London. We Manifest.",
+    "EXCELLERS is a business transformation partner working across strategy, operations, people, technology and AI. We Manifest.",
   keywords: [
     "business transformation",
     "management consultancy",

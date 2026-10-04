@@ -152,25 +152,19 @@ export default function Capabilities() {
               />
             ))}
 
-            {/* the hub */}
+            {/* the hub: the trademark sits at the centre of the system.
+                Plain <image> rather than next/image — this is inside an SVG,
+                and scripts/make-relative.mjs rewrites the /brand/ path for
+                the static export. */}
             <circle cx={C} cy={C} r={34} fill="#ffffff" stroke="var(--color-marian)" strokeWidth={2} />
-            <circle cx={C} cy={C - 12} r={4} fill="var(--color-signal)" />
-            <text
-              x={C}
-              y={C + 10}
-              textAnchor="middle"
-              className="fill-slate text-[10px] font-semibold"
-            >
-              {capabilitiesIntro.hub[0]}
-            </text>
-            <text
-              x={C}
-              y={C + 22}
-              textAnchor="middle"
-              className="fill-slate text-[10px]"
-            >
-              {capabilitiesIntro.hub[1]}
-            </text>
+            <image
+              href="/brand/symbol.png"
+              x={C - 14.5}
+              y={C - 19}
+              width={29}
+              height={38}
+              preserveAspectRatio="xMidYMid meet"
+            />
 
             {NODES.map(([x, y], i) => (
               <g

@@ -24,11 +24,8 @@ export const brand = {
   email: "hello@excellers.co",
   whatsapp: "+1 000 000 0000",
   whatsappHref: "https://wa.me/10000000000",
-  blurb:
-    "A business transformation consultancy working from Islamabad, Maryland and London.",
+  blurb: "A business transformation consultancy.",
 };
-
-export const regions = ["Islamabad", "Maryland", "London"];
 
 export const nav = [
   { label: "Capabilities", href: "#capabilities" },
@@ -169,7 +166,6 @@ export const capabilitiesIntro = {
   eyebrow: "Capabilities",
   title: "The right capability. The right moment.",
   lede: "Eight capabilities, one system. Each strengthens the others through the same five-stage method. Select one to see it connect.",
-  hub: ["One method", "five stages"],
   connects:
     "It works with the seven other capabilities through the same five-stage method, so progress in one lifts the rest.",
 };
@@ -345,10 +341,6 @@ export const faq = {
   title: "Questions before the first conversation",
   items: [
     {
-      q: "Which regions do you work from, and how do time zones work?",
-      a: "We work from Islamabad, Maryland and London. At the start of an engagement we agree a working cadence so that sessions fall inside your working day.",
-    },
-    {
       q: "How do you handle confidentiality?",
       a: "Confidentiality is part of the baseline for every engagement. We sign an agreement before we review any of your material.",
     },
@@ -400,10 +392,6 @@ export const footer = {
         { label: "Insights", href: "#insights" },
         { label: "Careers", href: null },
       ],
-    },
-    {
-      title: "Regions",
-      links: regions.map((r) => ({ label: r, href: null })),
     },
   ],
   tagline:
