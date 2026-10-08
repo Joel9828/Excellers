@@ -2,32 +2,34 @@ import path from "node:path";
 import type { NextConfig } from "next";
 
 /**
- * `npm run export` emits a fully static `out/` folder that can be dropped on
- * any plain web host. The normal dev/`npm run build` path is untouched.
+ * This site is static, always. There is no API route, no server component
+ * that needs a runtime, and every deploy target (Hostinger, Vercel) serves
+ * plain files — so `output: "export"` is unconditional rather than hidden
+ * behind an env var.
+ *
+ * It used to be gated on EXPORT_STATIC=1, which failed on Hostinger: the
+ * variable did not reach the `next build` child process, Next quietly made
+ * a server build into `.next` instead, and the deploy died later with a
+ * bare `ENOENT: out/.htaccess`. A build config that can silently become a
+ * different kind of build is not worth the flexibility it buys here.
  */
-const isStaticExport = process.env.EXPORT_STATIC === "1";
-
-/**
- * Relative asset URLs, for serving the export from a SUB-FOLDER rather than a
- * domain root. Off by default: root deploys (Hostinger public_html, Vercel)
- * want absolute paths, and `next/font` rejects a relative `assetPrefix`
- * outright when building with webpack.
- */
-const isRelative = process.env.EXPORT_RELATIVE === "1";
-
 const nextConfig: NextConfig = {
   // Pin the workspace root: a stray package-lock.json lives above this folder
   // and the bundler otherwise warns about inferring the wrong root.
   turbopack: { root: path.resolve(__dirname) },
 
-  ...(isStaticExport
-    ? {
-        output: "export" as const,
-        // no server, so next/image cannot optimise on the fly
-        images: { unoptimized: true },
-        ...(isRelative ? { assetPrefix: "./" } : {}),
-      }
-    : {}),
+  output: "export",
+
+  // no server, so next/image cannot optimise on the fly
+  images: { unoptimized: true },
+
+  /**
+   * Relative asset URLs, for serving from a SUB-FOLDER rather than a domain
+   * root. Off by default: root deploys want absolute paths, and `next/font`
+   * rejects a relative `assetPrefix` outright when building with webpack, so
+   * this path is Turbopack-only.
+   */
+  ...(process.env.EXPORT_RELATIVE === "1" ? { assetPrefix: "./" } : {}),
 };
 
 export default nextConfig;

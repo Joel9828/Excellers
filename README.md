@@ -97,8 +97,10 @@ npm run export
 That produces `out/` and does four things the browser would otherwise fail
 at silently:
 
-1. builds with `EXPORT_STATIC=1`, which turns on `output: "export"` and
-   `images.unoptimized` (no server means no on-the-fly image optimisation);
+1. builds with webpack. `output: "export"` is set unconditionally in
+   `next.config.ts` — it used to be gated on an env var, which Hostinger's
+   builder did not pass through to the `next build` child, so Next quietly
+   made a server build and the deploy died later on a missing `out/`;
 2. writes `deploy/hostinger/htaccess.conf` out as `out/.htaccess`, refusing
    to continue if it has picked up a BOM — a byte-order mark there makes
    Apache 500 the entire site. The source is deliberately **not** named

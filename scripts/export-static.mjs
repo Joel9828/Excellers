@@ -26,9 +26,16 @@ const run = (cmd, args, opts = {}) =>
   execFileSync(cmd, args, { stdio: "inherit", shell: true, ...opts });
 
 console.log(`\n→ building static export (${relative ? "relative" : "root"})`);
-run("npx", ["next", "build", "--webpack"], {
-  env: { ...process.env, EXPORT_STATIC: "1" },
-});
+run("npx", ["next", "build", "--webpack"]);
+
+// Fail here, with a reason, rather than letting the next step die on a bare
+// ENOENT. If out/ is missing it means the build was not a static export.
+if (!existsSync("out")) {
+  console.error("\n✗ next build did not produce out/");
+  console.error('  output: "export" was not active for that build.');
+  console.error("  Check next.config.ts still sets it unconditionally.");
+  process.exit(1);
+}
 
 if (relative) {
   console.log("\n→ rewriting absolute asset paths");
