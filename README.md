@@ -99,9 +99,12 @@ at silently:
 
 1. builds with `EXPORT_STATIC=1`, which turns on `output: "export"` and
    `images.unoptimized` (no server means no on-the-fly image optimisation);
-2. copies `deploy/hostinger/.htaccess` into `out/`, refusing to continue if
-   it has picked up a BOM — a byte-order mark there makes Apache 500 the
-   entire site;
+2. writes `deploy/hostinger/htaccess.conf` out as `out/.htaccess`, refusing
+   to continue if it has picked up a BOM — a byte-order mark there makes
+   Apache 500 the entire site. The source is deliberately **not** named
+   `.htaccess`: Hostinger's "Staging source files" step drops dotfiles when
+   it copies the checkout into the build container, so a committed dotfile
+   arrives missing and the build dies on ENOENT even though git has it;
 3. re-parses every JS chunk, checks each file's bytes round-trip as UTF-8,
    and fails the build if any of it is wrong;
 4. checks `out/` has `index.html`, `404.html`, `.htaccess` and `_next/`.

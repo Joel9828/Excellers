@@ -13,11 +13,11 @@
  */
 import { execFileSync } from "node:child_process";
 import {
-  copyFileSync,
   existsSync,
   readFileSync,
   readdirSync,
   statSync,
+  writeFileSync,
 } from "node:fs";
 import { join } from "node:path";
 
@@ -35,20 +35,28 @@ if (relative) {
   run("node", ["scripts/make-relative.mjs"]);
 }
 
-console.log("\n→ copying .htaccess");
-const htaccess = join("deploy", "hostinger", ".htaccess");
+console.log("\n→ writing .htaccess");
+// The source is kept at a NON-dot path on purpose. Hostinger's "Staging
+// source files" step drops dotfiles when it copies the checkout into the
+// build container, so a committed deploy/hostinger/.htaccess arrives
+// missing and the build dies on ENOENT even though git has it. We store it
+// as htaccess.conf and write the dotfile into out/ ourselves.
+const htaccess = join("deploy", "hostinger", "htaccess.conf");
 if (!existsSync(htaccess)) {
   console.error(`✗ missing ${htaccess}`);
+  console.error("  Not skippable: without it the upload has no HTTPS");
+  console.error("  redirect, no pretty URLs, no 404 page and no cache");
+  console.error("  headers, and nothing would report that at runtime.");
   process.exit(1);
 }
 // A BOM here makes Apache 500 the whole site, so it is worth re-checking at
 // the point of copy and not only at the point of writing.
 const raw = readFileSync(htaccess);
 if (raw[0] === 0xef && raw[1] === 0xbb && raw[2] === 0xbf) {
-  console.error("✗ .htaccess starts with a UTF-8 BOM — Apache will 500");
+  console.error("✗ htaccess.conf starts with a UTF-8 BOM — Apache will 500");
   process.exit(1);
 }
-copyFileSync(htaccess, join("out", ".htaccess"));
+writeFileSync(join("out", ".htaccess"), raw);
 
 console.log("\n→ verifying export");
 run("node", ["scripts/verify-export.mjs", ...(relative ? ["--relative"] : [])]);
