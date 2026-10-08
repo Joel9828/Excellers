@@ -80,26 +80,56 @@ cyan noise and read worse than the WebGL scene.)
 Hostinger's shared plans serve files, not Node — so the site ships as a
 static export rather than a running Next server.
 
+**If you build from Git in the Hostinger panel, set:**
+
+| Setting | Value |
+| --- | --- |
+| Build command | `npm run export` |
+| Output directory | `out` |
+
+The defaults (`npm run build`, `.next`) build a *Node application* and will
+not produce anything this host can serve.
+
 ```bash
 npm run export
 ```
 
-That produces `out/` (~2.6 MB) and does four things the browser would
-otherwise fail at silently:
+That produces `out/` and does four things the browser would otherwise fail
+at silently:
 
-1. builds with `EXPORT_STATIC=1`, which turns on `output: "export"`,
-   `images.unoptimized` (no server means no on-the-fly image optimisation)
-   and `assetPrefix: "./"`;
-2. rewrites absolute `/brand/` and `/media/` paths to relative, so the
-   upload works at a domain root *or* in a sub-folder;
-3. copies `deploy/hostinger/.htaccess` into `out/`, refusing to continue
-   if it has picked up a BOM — a byte-order mark there makes Apache 500
-   the entire site;
-4. re-parses all JS chunks and checks `out/` has `index.html`, `404.html`,
-   `.htaccess` and `_next/`.
+1. builds with `EXPORT_STATIC=1`, which turns on `output: "export"` and
+   `images.unoptimized` (no server means no on-the-fly image optimisation);
+2. copies `deploy/hostinger/.htaccess` into `out/`, refusing to continue if
+   it has picked up a BOM — a byte-order mark there makes Apache 500 the
+   entire site;
+3. re-parses every JS chunk, checks each file's bytes round-trip as UTF-8,
+   and fails the build if any of it is wrong;
+4. checks `out/` has `index.html`, `404.html`, `.htaccess` and `_next/`.
 
 Then upload **the contents of `out/`** into `public_html` — including the
 dotfile `.htaccess`, which most FTP clients hide by default.
+
+### Why the build uses webpack
+
+`npm run export` passes `--webpack`. Turbopack runs `@tailwindcss/postcss`
+by spawning a Node worker, and on a constrained CI container that worker
+dies instantly — the build fails with `Failed to write app endpoint /page`
+→ `globals.css` → `creating new process` → `node process exited before we
+could connect to it`. webpack runs PostCSS in-process, so the build does
+not depend on the host letting us fork.
+
+### Root vs sub-folder
+
+The export uses absolute asset paths (`/_next/…`, `/brand/…`), which is
+what a domain root wants. To serve it from a sub-folder instead:
+
+```bash
+EXPORT_RELATIVE=1 npm run export
+```
+
+That sets `assetPrefix: "./"` and rewrites public paths to match. Note it
+only works under Turbopack — `next/font` rejects a relative `assetPrefix`
+outright when building with webpack.
 
 The `.htaccess` forces HTTPS (via `X-Forwarded-Proto`, since Hostinger
 terminates TLS at the proxy), maps pretty URLs onto the flat `.html` files

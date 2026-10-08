@@ -14,16 +14,12 @@ const run = (cmd, args, opts = {}) =>
 const capture = (cmd, args, opts = {}) =>
   execFileSync(cmd, args, { encoding: "utf8", shell: true, ...opts });
 
-console.log("\n[1/4] static export");
-run("npm", ["run", "build"], { env: { ...process.env, EXPORT_STATIC: "1" } });
+// One artifact for every target: the same `npm run export` a plain host
+// builds from, so Vercel can never be shipping something the host is not.
+console.log("\n[1/2] static export");
+run("npm", ["run", "export"]);
 
-console.log("\n[2/4] rewrite absolute public paths");
-run("node", ["scripts/make-relative.mjs"]);
-
-console.log("\n[3/4] verify export");
-run("node", ["scripts/verify-export.mjs"]);
-
-console.log(`\n[4/4] deploy to "${PROJECT}"`);
+console.log(`\n[2/2] deploy to "${PROJECT}"`);
 run("npx", ["vercel", "link", "--yes", "--project", PROJECT], { cwd: "out" });
 const out = capture("npx", ["vercel", "deploy", "--prod", "--yes"], { cwd: "out" });
 
