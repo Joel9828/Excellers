@@ -32,4 +32,11 @@ const nextConfig: NextConfig = {
   ...(process.env.EXPORT_RELATIVE === "1" ? { assetPrefix: "./" } : {}),
 };
 
+// Printed into the build log on purpose. When a host reports "no out/
+// directory", this line is the difference between "the config never
+// applied" and "something moved the folder afterwards".
+console.log(
+  `[next.config] output=${nextConfig.output} assetPrefix=${nextConfig.assetPrefix ?? "(none)"}`,
+);
+
 export default nextConfig;
